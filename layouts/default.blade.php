@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if IE 9]> <html class="ie9 no-js" lang="ID"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="ID"> <!--<![endif]-->
 <html>
     <head>
@@ -9,16 +9,25 @@
         {{ Theme::partial('defaultcss') }} 
         {{ Theme::asset()->styles() }} 
     </head>
-    <body class="boxed">
-        <div id="template-wrapper" class="boxed">
-            {{ Theme::partial('header') }} 
-            <div id="site-wrapper">
-                {{ Theme::place('content') }} 
-                {{ Theme::partial('subscribe') }} 
+    <body class="template-index">
+        <div id="cartDrawer" class="drawer drawerRight">
+            <div class="bingoCartTitle">
+                <span></span>
+                <div class="close jsDrawerClose">
+                    <span>&times;</span>
+                </div>
             </div>
+            <div id="cartContainer"></div>
+        </div>
+        <div id="pageContainer" class="isMoved">
+            {{ Theme::partial('header') }} 
+            <main class="mainContent contentMobileFixed">
+                {{ Theme::place('content') }} 
+            </main>
             {{ Theme::partial('footer') }} 
         </div>
         {{ Theme::partial('defaultjs') }} 
         {{ Theme::partial('analytic') }} 
+        <div id="goToTop" style="display: none;"><span class="fa fa-long-arrow-up"></span></div>
     </body>
 </html>
