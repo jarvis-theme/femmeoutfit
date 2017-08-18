@@ -4,7 +4,7 @@ return array(
     'num_display' => array(
         'home_product'      => 9,
         'main_product'      => 9,
-        'related_product'   => 4,
+        'related_product'   => 8,
         'latest_product'    => 5,
         'bestseller'        => 5,
         'featured'          => 5,

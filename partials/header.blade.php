@@ -115,36 +115,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <script type="text/javascript">
-                                            $(document).ready( function(){ 
-                                                $(".bingoSearchTop").each( function(){
-                                                    $(".searchBoxTop").hover(function(){
-                                                        $("#bingoSearchbox .bingoSearch").focus();
-                                                    });
-                                                    $(".bingoSearchIcon").click( function(){
-                                                        $(".searchBoxTop").toggleClass("active");
-                                                        $(".searchClose").toggleClass("active");
-                                                        $(".searchOverLayer").toggleClass("active");
-                                                    });
-                                                    $(".searchClose").click( function(){
-                                                        var hasClass = $(this).hasClass('active');
-                                                        if(hasClass){
-                                                            $(".searchBoxTop").removeClass("active");
-                                                            $(".searchClose").removeClass("active");
-                                                            $(".searchOverLayer").removeClass("active");
-                                                        }
-                                                    });
-                                                    $(".searchOverLayer").click( function(){
-                                                        var hasClass = $(this).hasClass('active');
-                                                        if(hasClass){
-                                                            $(".searchBoxTop").removeClass("active");
-                                                            $(".searchClose").removeClass("active");
-                                                            $(".searchOverLayer").removeClass("active");
-                                                        }
-                                                    });
-                                                }); 
-                                            });
-                                        </script>
                                     </div>
                                     <div class="bingoTopLinks">
                                         <div class="topLinksTitle" data-toggle="dropdown">

@@ -1,6 +1,50 @@
 .picmix { max-width: 45px; opacity: 0.7; }
 .picmix:hover { opacity: 1; }
 .footerNewsletter { background-image: url(../../assets/img/max_image59.jpg); }
+.selects-wrapper {
+    position: relative;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 26px;
+    clear: both;
+    width: 100%;
+}
+.selects-wrapper:after {
+    content: "\eb73";
+    color: #707070;
+    font-family: "IcoFont";
+    font-size: 12px;
+    position: absolute;
+    bottom: 14px;
+    right: 13px;
+}
+.selects {
+    min-width: 170px;
+    height: 47px;
+    padding: 4px 14px 5px;
+    color: #707070;
+    border: 2px solid #ebebeb;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+}
+.selects:focus {
+    border-color: #252525;
+}
+.autoheight { height: auto !important; }
+.captcha > .input-group-addon { padding: 0; }
+.mt10 { margin-top: 10px !important; }
+.mt20 { margin-top: 20px !important; }
+.mt30 { margin-top: 30px !important; }
+.mb10 { margin-bottom: 10px !important; }
+.mb20 { margin-bottom: 20px !important; }
+.mb30 { margin-bottom: 30px !important; }
+
 
 /* font web */
 @font-face {
