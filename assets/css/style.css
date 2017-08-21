@@ -49,12 +49,12 @@
 /* font web */
 @font-face {
     font-family: 'FontAwesome';
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot");
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot") format("embedded-opentype"),
-         url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2") format("woff2"),
-         url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff") format("woff"),
-         url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf") format("truetype"),
-         url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg") format("svg");
+    src: url("../css/fonts/fontawesome-webfont.eot");
+    src: url("../css/fonts/fontawesome-webfont.eot") format("embedded-opentype"),
+         url("../css/fonts/fontawesome-webfont.woff2") format("woff2"),
+         url("../css/fonts/fontawesome-webfont.woff") format("woff"),
+         url("../css/fonts/fontawesome-webfont.ttf") format("truetype"),
+         url("../css/fonts/fontawesome-webfont.svg") format("svg");
     font-weight: normal;
     font-style: normal
 }
@@ -2129,8 +2129,8 @@
 }
 @font-face {
     font-family: 'IcoFont';
-    src: url("//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/icofont.eot?16074491382888622753");
-    src: url("//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/icofont.eot?16074491382888622753") format("embedded-opentype"), url("//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/icofont.ttf?16074491382888622753") format("truetype"), url("//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/icofont.woff?16074491382888622753") format("woff"), url("//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/icofont.svg?16074491382888622753") format("svg");
+    src: url("../css/fonts//icofont.eot");
+    src: url("../css/fonts/icofont.eot") format("embedded-opentype"), url("../css/fonts/icofont.ttf") format("truetype"), url("../css/fonts/icofont.woff?16074491382888622753") format("woff"), url("//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/icofont.svg?16074491382888622753") format("svg");
     font-weight: normal;
     font-style: normal
 }

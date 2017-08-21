@@ -9,7 +9,7 @@
                                 <div class="bingoHeaderLeft col-xs-12 col-sm-2 col-md-2">
                                     <h1 class="bingoLogo">
                                         <a href="/" itemprop="url" class="bingoLogoLink">
-                                            {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'itemprop'=>'logo', 'srcset'=>logo_image_url(), 'style'=>'max-height: 75px;')) }}
+                                            {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'itemprop'=>'logo', 'srcset'=>logo_image_url(), 'style'=>'max-height: 75px;margin:-20px;')) }}
                                         </a>
                                     </h1>
                                 </div>

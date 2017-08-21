@@ -17,4 +17,13 @@
 <meta property="og:description"   content="{{$description}}" />
 <meta property="og:image"         content="{{@$img!='' ? product_image_url($img):''}}" />
 <link rel="canonical" href="{{URL::full()}}">
+
 {{ pluginHeader() }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="twitter:site" content="@jarvis_store">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Responsive Theme">
+<meta name="twitter:description" content="Bingo Max">

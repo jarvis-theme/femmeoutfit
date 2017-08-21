@@ -21,7 +21,7 @@
         </div>
         <div id="pageContainer" class="isMoved">
             {{ Theme::partial('header') }} 
-            <main class="mainContent contentMobileFixed">
+            <main class="mainContent contentMobileFixed" style="">
                 {{ Theme::partial('slider') }} 
                 {{ Theme::place('content') }} 
             </main>

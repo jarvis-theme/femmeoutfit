@@ -117,9 +117,9 @@
                                     <div class="footerHTMLDesc">
                                         {{ short_description(about_us()->isi,150) }}
                                     </div>
-                                    <!-- <div class="footerHTMLBtn">
-                                        <a href="#" title="Read more">Read more</a>
-                                    </div> -->
+                                    <div class="footerHTMLBtn">
+                                        <a href="/halaman/about-us" title="Read more">Read more</a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-8">

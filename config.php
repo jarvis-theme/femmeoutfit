@@ -11,7 +11,7 @@ return array(
         'blog'              => 5,
         'testimonial'       => 4,
         'image_product'     => 'large',
-        'image_slide'       => 1200,
+        'image_slide'       => 1920,
         'image_mainbanner'  => 750,
         'image_sidebanner'  => 350
     ),
