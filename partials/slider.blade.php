@@ -90,7 +90,7 @@
               </div>
             </div>
                         
-            <div class="owl-controls clickable">
+            <!-- <div class="owl-controls clickable">
               <div class="owl-pagination">
                 <div class="owl-page active">
                   <span class=""></span>
@@ -103,7 +103,7 @@
                 <div class="owl-prev">prev</div>
                 <div class="owl-next">next</div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
