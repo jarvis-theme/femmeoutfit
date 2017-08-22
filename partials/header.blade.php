@@ -123,13 +123,14 @@
                                         </div>
                                         <ul class="dropdown-menu">
                                             @if(is_login())
-                                            <li><a href="{{ url('member') }}">My Account</a></li>
+                                            <li><a href="{{ url('member') }}">History Order</a></li>
+                                            <li><a href="{{ url('member/profile/edit') }}">Edit Profile</a></li>
+                                            <li><a href="{{ url('checkout') }}">Checkout</a></li>
                                             <li>{{HTML::link('logout', 'Logout')}}</li>
                                             @else
                                             <li><a href="{{ url('member') }}" id="customer_login_link">Login</a></li>
                                             <li><a href="{{ url('member/create') }}" id="customer_register_link">Register</a></li>
                                             @endif
-                                            <li><a href="{{ url('checkout') }}">Checkout</a></li>
                                         </ul>
                                     </div>
                                     <div class="bingoCartTop" id="shoppingcartplace">

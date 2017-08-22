@@ -35,14 +35,14 @@
                             <h1 class="bingoContactTitle">Order Confirmation</h1>
                             <div class="pageContent">
                                 <div class="formContactUs">
-                                    <form method="post" action="http://example.jstore.dev/kontak" id="contact_form" class="contact-form" accept-charset="UTF-8">
+                                    <form method="post" action="http://example.jstore.dev/konfirmasiorder" id="contact_form" class="contact-form" accept-charset="UTF-8">
                                         <div class="formContent">
                                             <div class="form-group">
                                                 <label for="ContactFormName" class="hidden-label">Order ID</label>
                                                 <input type="text" id="ContactFormName" class="form-control" name="kodeorder" placeholder="Order ID" value="{{ Input::old('kodeorder') }}" required autofocus>
                                             </div>
                                             <div class="form-button">
-                                                <input type="submit" class="btn btnbingoOne" value="Submit">
+                                                <input type="submit" class="btnbingoOne" value="Submit">
                                             </div>
                                         </div>
                                     </form>

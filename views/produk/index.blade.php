@@ -115,7 +115,6 @@
                                     <label for="SortBy">Sort by:</label>
                                     <select name="SortBy" id="SortBy" class="form-control">
                                         <option value="manual">Featured</option>
-                                        <option value="best-selling">Best Selling</option>
                                         <option value="title-ascending">Alphabetically, A-Z</option>
                                         <option value="title-descending">Alphabetically, Z-A</option>
                                         <option value="price-ascending">Price, low to high</option>
@@ -153,26 +152,11 @@
                                                         <div class="priceProduct priceSale">{{ price($myproduk->hargaJual) }}</div>
                                                     </div>
                                                     <div class="proButton mb20">
-                                                        <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart"> -->
-                                                            <!-- <input type="hidden" name="id" value="36625412552"> -->
-                                                            <a class="btn btnAddToCart" href="{{ product_url($myproduk) }}">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                                <span>View</span>
-                                                            </a>
-                                                        <!-- </form> -->
-                                                        <!-- <div class="productWishList">
-                                                            <a class="btn btnWishlistNoLog btnProduct" href="/account/login" title="Add to wishlist">
-                                                                <i class="icofont icofont-heart-alt"></i>
-                                                                <span>Add to wishlist</span>
-                                                            </a>
-                                                        </div> -->
-                                                    </div>
-                                                    <!-- <div class="productQuickView">
-                                                        <a class="btn btnProduct btnProductQuickview" href="#bingoQuickView" data-handle="sed-mollis-est-ac-urna" data-toggle="tooltip" title="" data-original-title="Quickview">
-                                                            <i class="fa fa-eye"></i>
-                                                            <span>Quickview</span>
+                                                        <a class="btn btnAddToCart" href="{{ product_url($myproduk) }}">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                            <span>View</span>
                                                         </a>
-                                                    </div> -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -39,7 +39,6 @@
                         <div class="customerReviews mt10">
                             <div class="customerAvatar">
                                 <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/avatar_customer.jpg') }}">
-                                <!-- <img class="img-responsive" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/customer_avatar.jpg?v=1496223411"> -->
                             </div>
                             <div class="reviewContent">
                                 <div class="reviews">{{ trim($testi->isi) }}</div>
