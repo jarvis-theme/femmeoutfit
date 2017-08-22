@@ -69,60 +69,23 @@
           <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="3" data-columntwo="3" data-columnthree="2" data-columnfour="2" data-columnfive="1" style="opacity: 1; display: block;">
             <div class="owl-wrapper-outer">
               <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(0px, 0px, 0px);">
-                
+                @foreach(list_koleksi() as $key=>$koleksi)
                 <div class="owl-item active" style="width: 400px;">
                   <div class="item">
                     <div class="maxBoxCollection">
                       <div class="max-collection--image">
-                        <img class="img-responsive" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_image56.jpg?v=1499074051">
+                        <img src="{{koleksi_image_url($koleksi->gambar)}}" class="img-responsive" alt="{{$koleksi->nama}}" />
                       </div>
                       <div class="max-collection--caption">
                         <h3 class="max-collection--title">
-                          <a href="/collections/frontpage">Men <br>Elegant <br>Collection</a>
+                          <a href="{{koleksi_url($koleksi)}}">{{$koleksi->nama}}</a>
                         </h3>
                         <a class="max-collection--button" href="/collections/frontpage">Shop now <i class="icofont icofont-bubble-right"></i></a>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <div class="owl-item active" style="width: 400px;">
-                  <div class="item">
-                    <div class="maxBoxCollection">
-                        <div class="max-collection--image">
-                          <img class="img-responsive" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_image57.jpg?v=1499074057">
-                        </div>
-                        <div class="max-collection--caption">
-                          <h3 class="max-collection--title"><a href="/collections/jumpers-cardigans">Leather <br>Collection</a></h3>
-                          <a class="max-collection--button" href="/collections/jumpers-cardigans">Shop now <i class="icofont icofont-bubble-right"></i></a>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="owl-item active" style="width: 400px;">
-                  <div class="item">
-                    <div class="maxBoxCollection">
-                        <div class="max-collection--image">
-                          <img class="img-responsive" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_image58.jpg?v=1499074064">
-                        </div>
-                        <div class="max-collection--caption">
-                          <h3 class="max-collection--title"><a href="/collections/leather-jackets">Not <br>Just <br>Watch</a></h3><a class="max-collection--button" href="/collections/leather-jackets">Shop now <i class="icofont icofont-bubble-right"></i></a>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="owl-item" style="width: 400px;">
-                  <div class="item">
-                    <div class="maxBoxCollection">
-                      <div class="max-collection--image">
-                        <img class="img-responsive" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_image56.jpg?v=1499074051">
-                      </div>
-                      <div class="max-collection--caption">
-                        <h3 class="max-collection--title"><a href="/collections/long-sleeve-t-shirts">Women <br>Collection</a></h3><a class="max-collection--button" href="/collections/long-sleeve-t-shirts">Shop now <i class="icofont icofont-bubble-right"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
 
               </div>
             </div>
@@ -149,38 +112,3 @@
   </div>
 </div>
 
-<div class="maxHomeCollections">
-    <div class="container">
-        <div class="maxCollectionWrap" style="margin-top: ;">
-            
-                <div class="owlCarouselPlay">
-                    <div class="owl-carousel" 
-                        data-nav="true" 
-                        data-autoplay="false" 
-                        data-autospeed="10000" 
-                        data-speed="300" 
-                        data-columnone="3" 
-                        data-columntwo="3" 
-                        data-columnthree="2" 
-                        data-columnfour="2" 
-                        data-columnfive="1">
-                      @foreach(list_koleksi() as $key=>$koleksi)
-                        <div class="item">
-                          <div class="maxBoxCollection">
-                              <div class="max-collection--image">
-                                  <img src="{{koleksi_image_url($koleksi,'medium')}}" class="img-responsive" alt="{{$koleksi->nama}}" />
-                              </div>
-                              <div class="max-collection--caption">
-                                  
-                                  <h3 class="max-collection--title"><a href="{{ koleksi_url($koleksi) }}">{{ $koleksi->nama }}</a></h3>
-                                  <a class="max-collection--button" href="{{ koleksi_url($koleksi) }}">SHop Now</a>
-                                  
-                              </div>
-                          </div>
-                        </div>
-                      @endforeach
-                    </div>
-                </div>
-        </div>
-    </div>
-</div>

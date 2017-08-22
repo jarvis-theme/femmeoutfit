@@ -1,3 +1,4 @@
+
 <div id="section-1495614695584" class="bingoFramework">
     <div class="productTabsHome layout-default">
         <div class="container">
@@ -176,7 +177,97 @@
         </div>
     </div>
 </div>
+<div id="shopify-section-1495614695584" class="shopify-section bingoFramework">
+    <div class="productTabsHome layout-default">
+        <div class="container">
+            <div id="proTab1495614695584" class="bingoProducts">
+                <div class="productTabsBoxTitle">
+                    <h3 class="productTabsTitle" data-toggle="dropdown">Max your style!</h3>
+                    <div class="listTabsContent dropdown-menu">
+                        <ul class="nav proTabNav">
+                            
+                                <li class="active">
+                                    <a href="#proTab11495614695584" data-toggle="tab" aria-expanded="true">New Arrivals</a>
+                                </li>
+                            
+                                <li class="">
+                                    <a href="#proTab21495614695584" data-toggle="tab" aria-expanded="false">Best Sellers</a>
+                                </li>
+                            
+                                <li class="">
+                                    <a href="#proTab31495614695584" data-toggle="tab" aria-expanded="false">Hot Sales</a>
+                                </li>
+                            
+                                <li class="">
+                                    <a href="#proTab41495614695584" data-toggle="tab" aria-expanded="false">Trending</a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="bingoContent">
+                    <div class="navTabContent tab-content">
+                        <div class="tab-pane active" id="proTab11495614695584">
+                            <div class="proOwlCarousel proTabsOwlcarousel">
+                                <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="4" data-columntwo="4" data-columnthree="3" data-columnfour="2" data-columnfive="2" data-tabid="proTab1495614695584" style="opacity: 1; display: block;">
+                                    <div class="owl-wrapper-outer">
+                                        <div class="owl-wrapper" style="width: 4800px; left: 0px; display: block;">
+                                            
+                                            <div class="owl-item active" style="width: 300px;">
+                                                <div class="item">
+                                                    <div class="bingoProBlock">
+                                                        <div class="proHImage">
+                                                            <a class="proFeaturedImage" href="/products/cras-viverra-molestie">
+                                                                <img class="img-responsive" alt="Cras viverra molestie" src="//cdn.shopify.com/s/files/1/2027/9309/products/2_1_ff89fc42-4e14-40a5-b76e-da9a4557f7a6_270x.jpg?v=1498019557">
+                                                                <span class="hidden-sm hidden-xs">
+                                                                    <img class="img-responsive" alt="Cras viverra molestie" src="//cdn.shopify.com/s/files/1/2027/9309/products/2_2_19e6c8b5-d74b-40e5-ab5a-2735cc6d014a_270x.jpg?v=1498019559">
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="proContent">
+                                                            <h5 class="proName">
+                                                                <a href="/products/cras-viverra-molestie">Cras viverra molestie</a>
+                                                            </h5>
+                                                            <div class="proPrice">
+                                                                <div class="priceProduct priceSale">$60.00</div>
+                                                            </div>
+                                                            <div class="proButton">
+                                                                <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
+                                                                    <input type="hidden" name="id" value="36625387016">
+                                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
+                                                                        <i class="fa fa-shopping-cart"></i>
+                                                                        <span>Add to Cart</span>
+                                                                    </button>
+                                                                </form>
+                                                                <div class="productWishList">
+                                                                    <a class="btn btnWishlistNoLog btnProduct" href="/account/login" title="Add to wishlist">
+                                                                        <i class="icofont icofont-heart-alt"></i>
+                                                                        <span>Add to wishlist</span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="productQuickView">
+                                                                <a class="btn btnProduct btnProductQuickview" href="#bingoQuickView" data-handle="cras-viverra-molestie" data-toggle="tooltip" title="" data-original-title="Quickview">
+                                                                    <i class="fa fa-eye"></i>
+                                                                    <span>Quickview</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="section-1499070075923" class="bingoFramework">
     <div class="maxTestimonials">
         <div class="container">
@@ -209,36 +300,45 @@
     </div>
 </div>
 
-<div id="section-1499077397916" class="bingoFramework">
-    <div class="maxCollectionList">
-        <div class="container">
-            <h3 class="bingoHomeTitle">
-                Shop by CATEGORIES
-                <a class="allCategories" href="{{ url('produk') }}">View All <i class="icofont icofont-bubble-right"></i></a>
-            </h3>
-            <div class="bingoContent">
-                <div class="maxSlideCollections">
-                    <div class="owlCarouselPlay">
-                        <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="6" data-columntwo="5" data-columnthree="4" data-columnfour="3" data-columnfive="2">
-                            <div class="owl-wrapper-outer">
-                                <div class="owl-wrapper">
-                                    <div class="owl-item active" style="width: 195px;">
-                                        @foreach(list_koleksi() as $col)
-                                        <div class="item">
-                                            <div class="maxBoxCategories">
-                                                <div class="max-category--image">
-                                                    <a href="{{ koleksi_url($col) }}">
-                                                        <img class="img-responsive img-circle" alt="{{ $col->nama }}" src="{{ koleksi_image_url($col->gambar) }}">
-                                                    </a>
-                                                </div>
-                                                <div class="max-category--caption">
-                                                    <h3 class="max-category--title">
-                                                        <a href="{{ koleksi_url($col) }}">{{ $col->nama }}</a>
-                                                    </h3>
-                                                </div>
+<div id="shopify-section-1499077397916" class="shopify-section bingoFramework"><div class="maxCollectionList">
+    <div class="container">
+        <h3 class="bingoHomeTitle">
+            Shop by categories
+            <a class="allCategories" href="/collections">View All Categories <i class="icofont icofont-bubble-right"></i></a>
+        </h3>
+        <div class="bingoContent">
+            <div class="maxSlideCollections">
+                <div class="owlCarouselPlay">
+                    <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="6" data-columntwo="5" data-columnthree="4" data-columnfour="3" data-columnfive="2" style="opacity: 1; display: block;">
+                            
+                        <div class="owl-wrapper-outer">
+
+                            <div class="owl-wrapper" style="width: 2730px; left: 0px; display: block;">
+                                @foreach(list_category() as $key=>$kategori)
+                                <div class="owl-item active" style="width: 195px;">
+                                    <div class="item">
+                                        <div class="maxBoxCategories">
+                                            <div class="max-category--image">
+                                                <a href="{{category_url($kategori)}}"><img class="img-responsive img-circle" alt="Bingo Max" src="//d2kl9mvmw5l7p9.cloudfront.net/6feb-upload/kategori/{{$key+1}}.png"></a>
                                             </div>
+                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="{{category_url($kategori)}}">{{$kategori->nama}}</a></h3></div>
                                         </div>
-                                        @endforeach
+                                    </div>
+                                </div>
+                                @endforeach
+                                
+                                <div class="owl-controls clickable">
+                                    <div class="owl-pagination">
+                                        <div class="owl-page active">
+                                            <span class=""></span>
+                                        </div>
+                                        <div class="owl-page">
+                                            <span class=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="owl-buttons">
+                                        <div class="owl-prev">prev</div>
+                                        <div class="owl-next">next</div>
                                     </div>
                                 </div>
                             </div>
@@ -246,68 +346,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div id="shopify-section-1499077397916" class="shopify-section bingoFramework"><div class="maxCollectionList">
-    <div class="container"><h3 class="bingoHomeTitle">
-                Shop by categories
-<a class="allCategories" href="/collections">View All Categories <i class="icofont icofont-bubble-right"></i></a></h3><div class="bingoContent">
-            <div class="maxSlideCollections"><div class="owlCarouselPlay">
-                        <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="6" data-columntwo="5" data-columnthree="4" data-columnfour="3" data-columnfive="2" style="opacity: 1; display: block;">
-                            
-                                <div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 2730px; left: 0px; display: block;"><div class="owl-item active" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/running"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection1.png?v=1499229367"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/running">Men's</a></h3></div>
-                                        </div></div></div><div class="owl-item active" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/jumpers-cardigans"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection2.png?v=1499229376"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/jumpers-cardigans">Women's</a></h3></div>
-                                        </div></div></div><div class="owl-item active" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/leather-jackets"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection3.png?v=1499229386"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/leather-jackets">Jeans</a></h3></div>
-                                        </div></div></div><div class="owl-item active" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/long-sleeve-t-shirts"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection4.png?v=1499229393"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/long-sleeve-t-shirts">Caps &amp; hats</a></h3></div>
-                                        </div></div></div><div class="owl-item active" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/loungewear"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection5.png?v=1499229405"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/loungewear">Denim</a></h3></div>
-                                        </div></div></div><div class="owl-item active" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/oversized-longline"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection6.png?v=1499229417"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/oversized-longline">Shoes &amp; Trainers</a></h3></div>
-                                        </div></div></div><div class="owl-item" style="width: 195px;"><div class="item"><div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="/collections/swimwear"><img class="img-responsive img-circle" alt="Bingo Max" src="//cdn.shopify.com/s/files/1/2027/9309/files/max_slide_collection1.png?v=1499229367"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="/collections/swimwear">Swimwear</a></h3></div>
-                                        </div></div></div></div></div>
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                                
-                            
-                        <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div></div>
-                    </div></div>
         </div>
     </div>
 </div>
@@ -654,5 +692,6 @@
         </div>
     </div>
 </div>
+
 </div>
 </div>
