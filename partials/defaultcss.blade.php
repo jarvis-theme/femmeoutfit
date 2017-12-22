@@ -1,18 +1,28 @@
-<!-- CSS styles  -->
+<!-- Favicon -->
+<!-- <link rel="apple-touch-icon-precomposed icon" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"> -->
+{{createFavicon($toko)}}
+
+<!-- CSS Global -->
+{{ generate_theme_css('femmeoutfit/assets/plugins/bootstrap.min.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/plugins/bootstrap-select.min.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/plugins/owl.carousel.min.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/plugins/animate.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/plugins/magnify.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/plugins/subscribe-better.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/plugins/jquery.mCustomScrollbar.min.css') }} 
+
+<!-- Icon Font -->
+{{ generate_theme_css('femmeoutfit/assets/icons-font/font-awesome/css/font-awesome.min.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/icons-font/font-elegant/elegant.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/icons-font/simple-line-icons-master/css/simple-line-icons.css') }} 
+
+
+<!-- Custom CSS -->
 @if($tema->isiCss=='')
-	{{ generate_theme_css('celebandco/assets/css/style.css?v=001') }} 
+	{{ generate_theme_css('femmeoutfit/assets/css/home-ten.css') }} 
 @else
-	{{ generate_theme_css('celebandco/assets/css/editstyle.css?v=001') }} 
+	{{ generate_theme_css('femmeoutfit/assets/css/edithome-ten.css') }} 
 @endif
-
-{{ favicon() }} 
-
+{{ generate_theme_css('femmeoutfit/assets/css/main-style.css') }} 
 
 
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,300i,400,400i,600,600i,700,900" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,600i" rel="stylesheet">
-
-<!-- <link href="//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/bingo-fonts.scss.css?14124462035515045251" rel="stylesheet" type="text/css" media="all"> -->
-<!-- <link href="//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/bingo-site.scss.css?14124462035515045252" rel="stylesheet" type="text/css" media="all"> -->
-{{ generate_theme_css('celebandco/assets/css/bingo-site.scss.css?v=002') }} 
-<!-- <script type="text/javascript" async="" src="//productreviews.shopifycdn.com/assets/v4/spr.js?shop=bingo-max.myshopify.com" style=""></script><script type="text/javascript" async="" src="https://cdn.shopify.com/s/javascripts/tricorder/trekkie.storefront.min.js?v=2017.03.29.1"></script><script src="//cdn.shopify.com/s/files/1/2027/9309/t/12/assets/jquery.2.2.3.js?14124462035515045251" type="text/javascript"></script> -->

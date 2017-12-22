@@ -1,190 +1,77 @@
-<div id="section-bingo-footer">
-    <footer id="footer">
-        <div class="bingoFooterContainer">
-            <div class="footerCenter">
-                <div class="container">
-                    <div class="footerCenterWrap">
-                        <div class="footerContact">
-                            <div class="row">
-                                <div class="col-xs-12 col-md-4 col-lg-3">
-                                    <div class="boxContact address">
-                                        <div class="icon">
-                                            <i class="icofont icofont-location-pin"></i>
-                                        </div>
-                                        <div class="desc">{{ ucwords(@$kontak->alamat) }}</div>
-                                    </div>
-                                </div>
-                                @if(!empty($kontak->email))
-                                <div class="col-xs-12 col-md-4 col-lg-3">
-                                    <div class="boxContact email">
-                                        <div class="icon">
-                                            <i class="icofont icofont-envelope"></i>
-                                        </div>
-                                        <div class="desc">
-                                            <a href="mailto:{{ @$kontak->email }}" target="_blank">{{ @$kontak->email }}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                                @if(!empty($kontak->telepon) && !empty($kontak->hp))
-                                <div class="col-xs-12 col-md-4 col-lg-3">
-                                    <div class="boxContact phone">
-                                        <div class="icon">
-                                            <i class="icofont icofont-phone"></i>
-                                        </div>
-                                        <div class="desc">{{ $kontak->telepon }} <br>{{ $kontak->hp }}</div>
-                                    </div>
-                                </div>
-                                @endif
-                                <div class="col-xs-12 col-lg-3">
-                                    <div class="boxFooterSocial social">
-                                        <div class="footerSocial">
-                                            <div class="bingoSocial">
-                                                <h4 class="bingoTitle">Follow us</h4>
-                                                <div class="bingoContent">
-                                                    <ul class="bingolistSocial list-unstyled">
-                                                        @if($kontak->fb)
-                                                        <li class="facebook">
-                                                            <a target="_blank" href="{{ url($kontak->fb) }}" title="Facebook" class="btn-social" data-original-title="Facebook">
-                                                                <i class="icofont icofont-social-facebook"></i>
-                                                                <span>Facebook</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                        @if($kontak->tw)
-                                                        <li class="twitter">
-                                                            <a target="_blank" href="{{ url($kontak->tw) }}" title="Twitter" class="btn-social" data-original-title="Twitter">
-                                                                <i class="icofont icofont-social-twitter"></i>
-                                                                <span>Twitter</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                        @if($kontak->ig)
-                                                        <li class="instagram">
-                                                            <a target="_blank" href="{{ url($kontak->ig) }}" title="Instagram" class="btn-social" data-original-title="Instagram">
-                                                                <i class="icofont icofont-social-instagram"></i>
-                                                                <span>Instagram</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                        @if($kontak->gp)
-                                                        <li class="google-plus">
-                                                            <a target="_blank" href="{{ url($kontak->gp) }}" title="Google Plus" class="btn-social" data-original-title="Google Plus">
-                                                                <i class="icofont icofont-social-google-plus"></i>
-                                                                <span>Google Plus</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                        @if($kontak->pt)
-                                                        <li class="pinterest">
-                                                            <a target="_blank" href="{{ url($kontak->pt) }}" title="Pinterest" class="btn-social" data-original-title="Pinterest">
-                                                                <i class="icofont icofont-social-pinterest"></i>
-                                                                <span>Pinterest</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                        @if($kontak->tl)
-                                                        <li class="tumblr">
-                                                            <a target="_blank" href="{{ url($kontak->tl) }}" title="Tumblr" class="btn-social" data-original-title="Pinterest">
-                                                                <i class="icofont icofont-social-tumblr"></i>
-                                                                <span>Tumblr</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                        @if($kontak->picmix)
-                                                        <li>
-                                                            <a target="_blank" href="{{url($kontak->picmix)}}" title="Picmix">
-                                                                <img class="picmix" src="//d3kamn3rg2loz7.cloudfront.net/blogs/event/icon-picmix.png">
-                                                            </a>
-                                                        </li>
-                                                        @endif 
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-4">
-                                <div class="footerHTML">
-                                    <div class="footerLogo">
-                                        <a href="/">
-                                            {{ HTML::image(logo_image_url(),'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'style'=>'max-height: 100px')) }}
-                                        </a>
-                                    </div>
-                                    <div class="footerHTMLDesc">
-                                        {{ short_description(about_us()->isi,150) }}
-                                    </div>
-                                    <div class="footerHTMLBtn">
-                                        <a href="/halaman/about-us" title="Read more">Read more</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-8">
-                                {{ Theme::partial('subscribe') }}
-                                
-                                <div class="bingoFooterMenus">
-                                    <div class="bingoContent">
-                                        <ul class="bingoFooterLinks list-unstyled">
-                                        @foreach(other_menu() as $key=>$menu)
-                                            @if($key == '0' || $key == '1')
-                                                @foreach($menu->link as $link_menu)
-                                                    @if($menu->id == $link_menu->tautanId)
-                                                    <li>
-                                                        <a href="{{ menu_url($link_menu) }}" title="{{ $link_menu->nama }}">{{ $link_menu->nama }}</a>
-                                                    </li>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<footer class="footer-one">             
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-3 footer-widget">
+                <a href="#" class="footer-logo"> 
+                    {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'itemprop'=>'logo', 'srcset'=>logo_image_url())) }}
+                </a>
+                <div class="address">
+                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_house_alt">&nbsp;</i> <span class="ft-line-txt">{{ ucwords(@$kontak->alamat) }}</span></div>
+                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_mobile">&nbsp;</i> <span class="ft-line-txt"> {{ $kontak->hp }}</span></div>
+                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_mail_alt">&nbsp;</i> <span class="ft-line-txt">{{ @$kontak->email }}</span></div>
                 </div>
             </div>
-            <div class="footerCopyRight">
-                <div class="container">
-                    <div class="footerCopyRightWrap">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-5">
-                                <div class="bingoCopyRight">&copy; 2017 {{ Theme::place('title') }} - All Rights Reserved.</div>
-                            </div>
-                            <div class="col-xs-12 col-md-7">
-                                <div class="bingoPayment">
-                                    @foreach(list_banks() as $value)
-                                        @if($value->status == 1)
-                                        <a>{{$value->bankdefault->nama}}</a>
-                                        @endif
-                                    @endforeach
-                                    @foreach(list_payments() as $pay)
-                                        @if($pay->nama == 'paypal' && $pay->aktif == 1)
-                                        <a>Paypal</a>
-                                        @endif
-                                        @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                        <a>Ipaymu</a>
-                                        @endif
-                                        @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                        <a>Bitcoin</a>
-                                        @endif
-                                    @endforeach
-                                    @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                                        <a>Doku</a>
-                                    @endif
-                                    @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
-                                    <a>Midtrans</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-sm-hidden col-lg-1 footer-widget">
+            </div>
+            @foreach(other_menu() as $key=>$menu)
+                @if($key!=2)
+                <div class="col-sm-6 col-lg-2 footer-widget">
+                <h2 class="widget-title"> {{$menu->nama}}</h2>
+                    <ul>
+                        @foreach($menu->link as $key=>$link)
+                        <li>
+                            <a href="{{ menu_url($link) }}"> {{ $link->nama }}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>    
+                @endif    
+            @endforeach
+            <div class="col-sm-6 col-lg-3 footer-widget">
+                <h2 class="widget-title"> Method Payment </h2>
+                <div class="list-inline">
+                    @foreach(list_banks() as $value)
+                        @if($value->status == 1)
+                        <img src="{{bank_logo($value)}}" alt="{{$value->name}}" class="bank-logo" />
+                        @endif
+                    @endforeach
+                    @foreach(list_payments() as $pay)
+                        @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                        <img src="{{url(Config::get('aws.cdn2.endpoint').'/img/bank/paypal.png')}}" alt="support paypal" class="bank-logo" />
+                        @endif
+                        @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                        <img src="{{url(Config::get('aws.cdn2.endpoint').'/img/bank/ipaymu.png')}}" alt="support ipaymu" class="bank-logo" />
+                        @endif
+                        @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                        <img src="{{url(Config::get('aws.cdn2.endpoint').'/img/bank/bitcoin.png')}}" alt="support bitcoin" class="bank-logo" />
+                        @endif
+                    @endforeach
+                    @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
+                        <img src="{{url(Config::get('aws.cdn2.endpoint').'/img/bank/doku.jpg')}}" alt="support doku myshortcart" class="bank-logo" />
+                    @endif
+                    @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
+                        <img src="{{url(Config::get('aws.cdn2.endpoint').'/img/bank/veritrans.jpg')}}" alt="support veritrans" class="bank-logo" />
+                    @endif
+                </div>
+                <div class="clearfix"></div><br>
+                <h2 class="widget-title" style="padding: 0;"> Follow Us </h2>
+                <div class="social-link">
+                    <div class="list-inline social-link">
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-twitter"></i></a></span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-facebook"></i></a> </span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-google-plus"></i></a> </span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-instagram"></i></a></span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-pinterest"></i></a> </span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-youtube"></i></a> </span>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-</div>
+        <hr class="divider-1" />
+        <p class="copy-rights">
+            © 2017 <a href="#"> <b> {{ Theme::place('title') }} </b> </a>. All Rights Reserved                        
+        </p>
+    </div>
+</footer>
+
 {{ pluginPowerup() }} 

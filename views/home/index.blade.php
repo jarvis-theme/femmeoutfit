@@ -1,490 +1,222 @@
-<!-- DAFTAR PRODUK -->
-<div id="shopify-section-1495614695584" class="shopify-section bingoFramework">
-    <div class="productTabsHome layout-default">
-        <div class="container">
-            <div id="proTab1495614695584" class="bingoProducts">
-                <div class="productTabsBoxTitle">
-                    <h3 class="productTabsTitle" data-toggle="dropdown">Max your style!</h3>
-                    <div class="listTabsContent dropdown-menu">
-                        <ul class="nav proTabNav">
-                            
-                                <li class="active">
-                                    <a href="#new" data-toggle="tab" aria-expanded="true">New Arrivals</a>
-                                </li>
-                            
-                                <li class="">
-                                    <a href="#best" data-toggle="tab" aria-expanded="false">Best Sellers</a>
-                                </li>
-                            
-                                <li class="">
-                                    <a href="#home" data-toggle="tab" aria-expanded="false">Hot Sales</a>
-                                </li>
-                            
-                        </ul>
-                    </div>
-                </div>
-                <div class="bingoContent">
-                    <div class="navTabContent tab-content">
 
-                        <div class="tab-pane active" id="new">
-                            <div class="proOwlCarousel proTabsOwlcarousel">
-                                <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="4" data-columntwo="4" data-columnthree="3" data-columnfour="2" data-columnfive="2" data-tabid="proTab1495614695584" style="opacity: 1; display: block;">
-                                    <div class="owl-wrapper-outer">
-                                        <div class="owl-wrapper" style="width: 4800px; left: 0px; display: block;">
-                                            @foreach(new_product() as $new)
-                                            <div class="owl-item active" style="width: 300px;">
-                                                <div class="item">
-                                                    <div class="bingoProBlock">
-                                                        <div class="proHImage">
-                                                            <a class="proFeaturedImage" href="{{product_url($new)}}">
-                                                                <img class="img-responsive" alt="{{$new->nama}}" src="{{url(product_image_url($new->gambar1 ))}}">
-                                                                <span class="hidden-sm hidden-xs">
-                                                                    <img class="img-responsive" alt="{{$new->nama}}" src="{{url(product_image_url($new->gambar2 ))}}">
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="proContent">
-                                                            <h5 class="proName">
-                                                                <a href="{{product_url($new)}}">{{$new->nama}}</a>
-                                                            </h5>
-                                                            <div class="proPrice">
-                                                                <div class="priceProduct priceSale">{{price($new->hargaJual)}}</div>
-                                                            </div>
-                                                            <div class="proButton">
-                                                                <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
-                                                                    <input type="hidden" name="id" value="36625387016">
-                                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Add to Cart</span>
-                                                                    </button>
-                                                                </form> -->
-                                                                <a class="btn btnAddToCart" href="{{product_url($new)}}">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Add to Cart</span>
-                                                                    </a>
-                                                                <!-- <div class="productWishList">
-                                                                    <a class="btn btnWishlistNoLog btnProduct" href="/account/login" title="Add to wishlist">
-                                                                        <i class="icofont icofont-heart-alt"></i>
-                                                                        <span>Add to wishlist</span>
-                                                                    </a>
-                                                                </div> -->
-                                                            </div>
-                                                            <div class="productQuickView">
-                                                                <a class="btn btnProduct btnProductQuickview" href="{{product_url($new)}}" data-handle="cras-viverra-molestie" data-toggle="tooltip" title="" data-original-title="Quickview">
-                                                                    <i class="fa fa-eye"></i>
-                                                                    <span>Quickview</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="tab-pane" id="best">
-                            <div class="proOwlCarousel proTabsOwlcarousel">
-                                <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="4" data-columntwo="4" data-columnthree="3" data-columnfour="2" data-columnfive="2" data-tabid="proTab1495614695584" style="opacity: 1; display: block;">
-                                    <div class="owl-wrapper-outer">
-                                        <div class="owl-wrapper" style="width: 4800px; left: 0px; display: block;">
-                                            @foreach(best_seller() as $best)
-                                            <div class="owl-item active" style="width: 300px;">
-                                                <div class="item">
-                                                    <div class="bingoProBlock">
-                                                        <div class="proHImage">
-                                                            <a class="proFeaturedImage" href="{{product_url($best)}}">
-                                                                <img class="img-responsive" alt="{{$best->nama}}" src="{{url(product_image_url($best->gambar1 ))}}">
-                                                                <span class="hidden-sm hidden-xs">
-                                                                    <img class="img-responsive" alt="{{$best->nama}}" src="{{url(product_image_url($best->gambar2 ))}}">
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="proContent">
-                                                            <h5 class="proName">
-                                                                <a href="{{product_url($best)}}">{{$best->nama}}</a>
-                                                            </h5>
-                                                            <div class="proPrice">
-                                                                <div class="priceProduct priceSale">{{price($best->hargaJual)}}</div>
-                                                            </div>
-                                                            <div class="proButton">
-                                                                <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
-                                                                    <input type="hidden" name="id" value="36625387016">
-                                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Add to Cart</span>
-                                                                    </button>
-                                                                </form> -->
-                                                                <a class="btn btnAddToCart" href="{{product_url($best)}}">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Add to Cart</span>
-                                                                    </a>
-                                                                <!-- <div class="productWishList">
-                                                                    <a class="btn btnWishlistNoLog btnProduct" href="/account/login" title="Add to wishlist">
-                                                                        <i class="icofont icofont-heart-alt"></i>
-                                                                        <span>Add to wishlist</span>
-                                                                    </a>
-                                                                </div> -->
-                                                            </div>
-                                                            <div class="productQuickView">
-                                                                <a class="btn btnProduct btnProductQuickview" href="{{product_url($best)}}" data-handle="cras-viverra-molestie" data-toggle="tooltip" title="" data-original-title="Quickview">
-                                                                    <i class="fa fa-eye"></i>
-                                                                    <span>Quickview</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <div class="tab-pane" id="home">
-                            <div class="proOwlCarousel proTabsOwlcarousel">
-                                <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="4" data-columntwo="4" data-columnthree="3" data-columnfour="2" data-columnfive="2" data-tabid="proTab1495614695584" style="opacity: 1; display: block;">
-                                    <div class="owl-wrapper-outer">
-                                        <div class="owl-wrapper" style="width: 4800px; left: 0px; display: block;">
-                                            @foreach(home_product() as $home)
-                                            <div class="owl-item active" style="width: 300px;">
-                                                <div class="item">
-                                                    <div class="bingoProBlock">
-                                                        <div class="proHImage">
-                                                            <a class="proFeaturedImage" href="{{product_url($home)}}">
-                                                                <img class="img-responsive" alt="{{$home->nama}}" src="{{url(product_image_url($home->gambar1 ))}}">
-                                                                <span class="hidden-sm hidden-xs">
-                                                                    <img class="img-responsive" alt="{{$home->nama}}" src="{{url(product_image_url($home->gambar2 ))}}">
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="proContent">
-                                                            <h5 class="proName">
-                                                                <a href="{{product_url($home)}}">{{$home->nama}}</a>
-                                                            </h5>
-                                                            <div class="proPrice">
-                                                                <div class="priceProduct priceSale">{{price($home->hargaJual)}}</div>
-                                                            </div>
-                                                            <div class="proButton">
-                                                                <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
-                                                                    <input type="hidden" name="id" value="36625387016">
-                                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Add to Cart</span>
-                                                                    </button>
-                                                                </form> -->
-                                                                <a class="btn btnAddToCart" href="{{product_url($home)}}">
-                                                                        <i class="fa fa-shopping-cart"></i>
-                                                                        <span>Add to Cart</span>
-                                                                    </a>
-                                                                <!-- <div class="productWishList">
-                                                                    <a class="btn btnWishlistNoLog btnProduct" href="/account/login" title="Add to wishlist">
-                                                                        <i class="icofont icofont-heart-alt"></i>
-                                                                        <span>Add to wishlist</span>
-                                                                    </a>
-                                                                </div> -->
-                                                            </div>
-                                                            <div class="productQuickView">
-                                                                <a class="btn btnProduct btnProductQuickview" href="{{product_url($home)}}" data-handle="cras-viverra-molestie" data-toggle="tooltip" title="" data-original-title="Quickview">
-                                                                    <i class="fa fa-eye"></i>
-                                                                    <span>Quickview</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+<!-- Our Products -->
+<section class="our-products">
+    <div class="container">  
+        <br class="divider-1" />
+        <div class="title-wrap">
+            <!-- <h2 class="title-1">check our products</h2> -->
         </div>
-    </div>
-</div>
 
-<!-- TESTIMONIAL -->
-<div id="shopify-section-1499070075923" class="shopify-section bingoFramework">
-    <div class="maxTestimonials">
-        <div class="container">
-            <div class="bingoTestimonials" style="background-image: url(//cdn.shopify.com/s/files/1/2027/9309/files/max_image55.jpg?v=1499073644);">
-                
-                    <h3 class="bingoHomeTitle">Testimonials</h3>
-                
-                <div class="bingoContent">
-                    <div class="tesOwlRow owlCarouselPlay">
-                        <div class="owl-carousel owl-theme" data-nav="false" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="1" data-columntwo="1" data-columnthree="1" data-columnfour="1" data-columnfive="1" style="opacity: 1; display: block;">
-                            
-                            <div class="owl-wrapper-outer">
-                                <div class="owl-wrapper" style="width: 1800px; left: 0px; display: block; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);">
-                                    <div class="owl-item active" style="width: auto;">
-                                        <div class="item">
-                                            <div class="testimonialItem clearfix">
-                                                <div class="testimonialReview">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                </div>
-                                                <h4 class="testimonialName">Vin Nguyen <span>Purschaser</span></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="owl-controls clickable">
-                                <div class="owl-pagination">
-                                    <div class="owl-page ">
-                                        <span class=""></span>
-                                    </div>
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- KATEGORI -->
-<div id="shopify-section-1499077397916" class="shopify-section bingoFramework">
-    <div class="maxCollectionList">
-    <div class="container">
-        <h3 class="bingoHomeTitle">
-            Shop by categories
-            <a class="allCategories" href="/collections">View All Categories <i class="icofont icofont-bubble-right"></i></a>
-        </h3>
-        <div class="bingoContent">
-            <div class="maxSlideCollections">
-                <div class="owlCarouselPlay">
-                    <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="6" data-columntwo="5" data-columnthree="4" data-columnfour="3" data-columnfive="2" style="opacity: 1; display: block;">
-                            
-                        <div class="owl-wrapper-outer">
-
-                            <div class="owl-wrapper" style="width: 2730px; left: 0px; display: block;">
-                                @foreach(list_category() as $key=>$kategori)
-                                <div class="owl-item active" style="width: 195px;">
-                                    <div class="item">
-                                        <div class="maxBoxCategories">
-                                            <div class="max-category--image">
-                                                <a href="{{category_url($kategori)}}"><img class="img-responsive img-circle" alt="Bingo Max" src="//d2kl9mvmw5l7p9.cloudfront.net/6feb-upload/kategori/{{$key+1}}.png"></a>
-                                            </div>
-                                            <div class="max-category--caption"><h3 class="max-category--title"><a href="{{category_url($kategori)}}">{{$kategori->nama}}</a></h3></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                                
-                                <div class="owl-controls clickable">
-                                    <div class="owl-pagination">
-                                        <div class="owl-page active">
-                                            <span class=""></span>
-                                        </div>
-                                        <div class="owl-page">
-                                            <span class=""></span>
-                                        </div>
-                                    </div>
-                                    <div class="owl-buttons">
-                                        <div class="owl-prev">prev</div>
-                                        <div class="owl-next">next</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
-
-<!-- PRODUCT PER KATEGOTI -->
-<div id="shopify-section-1499141271046" class="shopify-section bingoFramework">
-    <div class="maxThreeProducts">
-        <div class="container">
-            <div class="maxThreeProductsWrap">
+        <ul class="theme-tabs-1 font-2">
+            <li class="active"> <a href="#prod-tab-1"  data-toggle="tab"> Best Seller  </a> </li>
+            <li class=""> <a href="#prod-tab-2"  data-toggle="tab"> New Arrival  </a> </li>
+            <li class=""> <a href="#prod-tab-3"  data-toggle="tab"> Sale  </a> </li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="prod-tab-1">
                 <div class="row">
-                    <div class="col-xs-12 col-md-4">
-                        <div class="maxslideProducts">
-                            <h4 class="bingoHomeTitle">Men's</h4>
-                            <div class="bingoContent">
-                                @foreach(list_product(3,$kategori[0]) as $men)
-                                <div class="bingoThreeProduct">
-                                    <div class="proHImage">
-                                        <a class="proFeaturedImage" href="{{product_url($men)}}">
-                                            <img class="img-responsive" alt="{{$men->nama}}" src="{{url(product_image_url($men->gambar1,'medium'))}}">
-                                        </a>
-                                    </div>
-                                    <div class="proContent">
-                                        <h5 class="proName">
-                                            <a href="/products/sed-mollis-est-ac-urna">{{$men->nama}}</a>
-                                        </h5>
-                                        <div class="proPrice">
-                                            <div class="priceProduct priceSale">{{price($men->hargaJual)}}</div>
-                                            
-                                        </div>
-                                        <div class="proButton">
-                                            <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
-                                                <input type="hidden" name="id" value="36625412552">
-
-                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span>Add to Cart</span>
-                                                    </button>
-
-                                            </form> -->
-                                            <a class="btn btnAddToCart" href="{{product_url($men)}}">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Add to Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                    @foreach(best_seller(6) as $best)
+                    <div class="col-sm-6 col-md-4 col-lg-2">
+                        <div class="product-item">
+                            <div class="product-image">
+                                <a href="{{product_url($best)}}" class="img"> 
+                                    <img src="{{url(product_image_url($best->gambar1 ))}}" alt="" /> 
+                                    <span class="product-hover">
+                                        <img alt="" src="{{url(product_image_url($best->gambar2 ))}}">          
+                                    </span>
+                                </a>
+                                <!-- <div class="quick-view">
+                                    <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
+                                </div> -->
+                                @if(is_outstok($best))
+                                <!-- <div class="new-tag"> out of stock </div> -->
+                                @else
+                                    @if(is_terlaris($best))
+                                        <div class="sale-tag"> Hot </div>
+                                    @endif
+                                    @if(is_produkbaru($best))
+                                        <div class="new-tag"> New </div>
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="product-content">
+                                <p class="product-title"> <a href="{{product_url($best)}}">{{$best->nama}}</a> </p>
+                                <span class="price"> <b>{{price($best->hargaJual)}}</b> <del>{{price($best->hargaCoret)}}</del> </span>
+                                <!-- <div class="rating">                                                              
+                                    <span class="star active"></span>
+                                    <span class="star active"></span>
+                                    <span class="star active"></span>                                           
+                                    <span class="star half"></span>
+                                    <span class="star "></span>                                                
+                                </div> -->
+                                <div class="product-links"> 
+                                    @if(is_outstok($best))
+                                    <a href="/kontak" class="add-to-cart"> <span> Request </span> <i class="icon_cart_alt"></i> </a>
+                                    @else
+                                    <a href="{{product_url($best)}}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
+                                    @endif
+                                    <!-- <a href="#" class="icon_heart_alt"></a>
+                                    <a href="#" class="icon_piechart"></a> -->
                                 </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xs-12 col-md-4">
-                        <div class="maxslideProducts">
-                            <h4 class="bingoHomeTitle">Women's</h4>
-                            <div class="bingoContent">
-                                @foreach(list_product(3,$kategori[1]) as $woman)
-                                <div class="bingoThreeProduct">
-                                    <div class="proHImage">
-                                        <a class="proFeaturedImage" href="{{product_url($woman)}}">
-                                            <img class="img-responsive" alt="{{$woman->nama}}" src="{{url(product_image_url($woman->gambar1,'medium'))}}">
-                                        </a>
-                                    </div>
-                                    <div class="proContent">
-                                        <h5 class="proName">
-                                            <a href="/products/sed-mollis-est-ac-urna">{{$woman->nama}}</a>
-                                        </h5>
-                                        <div class="proPrice">
-                                            <div class="priceProduct priceSale">{{price($woman->hargaJual)}}</div>
-                                            
-                                        </div>
-                                        <div class="proButton">
-                                            <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
-                                                <input type="hidden" name="id" value="36625412552">
-
-                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span>Add to Cart</span>
-                                                    </button>
-
-                                            </form> -->
-                                            <a class="btn btnAddToCart" href="{{product_url($woman)}}">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Add to Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="prod-tab-2">
+                <div class="row">
+                    @foreach(new_product(6) as $new)
+                    <div class="col-sm-6 col-md-4 col-lg-2">
+                        <div class="product-item">
+                            <div class="product-image">
+                                <a href="{{product_url($new)}}" class="img"> 
+                                    <img src="{{url(product_image_url($new->gambar1 ))}}" alt="" /> 
+                                    <span class="product-hover">
+                                        <img alt="" src="{{url(product_image_url($new->gambar2 ))}}">          
+                                    </span>
+                                </a>
+                                <!-- <div class="quick-view">
+                                    <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
+                                </div> -->
+                                <div class="new-tag"> new </div>
+                            </div>
+                            <div class="product-content">
+                                <h2 class="product-title"> <a href="#">{{$new->nama}}</a> </h2>
+                                <span class="price"> {{price($new->hargaJual)}}</b> <del>{{price($new->hargaCoret)}} </span>
+                                <!-- <div class="rating">                                                              
+                                    <span class="star active"></span>
+                                    <span class="star active"></span>
+                                    <span class="star active"></span>                                           
+                                    <span class="star active"></span>
+                                    <span class="star half"></span>                                                
+                                </div> -->
+                                <div class="product-links"> 
+                                    @if(is_outstok($new))
+                                    <a href="/kontak" class="add-to-cart"> <span> Request </span> <i class="icon_cart_alt"></i> </a>
+                                    @else
+                                    <a href="{{product_url($new)}}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
+                                    @endif
+                                    <!-- <a href="#" class="icon_heart_alt"></a>
+                                    <a href="#" class="icon_piechart"></a> -->
                                 </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xs-12 col-md-4">
-                        <div class="maxslideProducts">
-                            <h4 class="bingoHomeTitle">Junior's</h4>
-                            <div class="bingoContent">
-                                @foreach(list_product(3,$kategori[2]) as $junior)
-                                <div class="bingoThreeProduct">
-                                    <div class="proHImage">
-                                        <a class="proFeaturedImage" href="{{product_url($junior)}}">
-                                            <img class="img-responsive" alt="{{$junior->nama}}" src="{{url(product_image_url($junior->gambar1,'medium'))}}">
-                                        </a>
-                                    </div>
-                                    <div class="proContent">
-                                        <h5 class="proName">
-                                            <a href="/products/sed-mollis-est-ac-urna">{{$junior->nama}}</a>
-                                        </h5>
-                                        <div class="proPrice">
-                                            <div class="priceProduct priceSale">{{price($junior->hargaJual)}}</div>
-                                            
-                                        </div>
-                                        <div class="proButton">
-                                            <!-- <form action="/cart/add" method="post" enctype="multipart/form-data" class="formAddToCart">
-                                                <input type="hidden" name="id" value="36625412552">
-
-                                                    <button class="btn btnAddToCart" type="submit" value="Submit">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span>Add to Cart</span>
-                                                    </button>
-
-                                            </form> -->
-                                            <a class="btn btnAddToCart" href="{{product_url($junior)}}">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Add to Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="prod-tab-3">
+                <div class="row">
+                    @foreach(home_product(6) as $home)
+                    <div class="col-sm-6 col-md-4 col-lg-2">
+                        <div class="product-item">
+                            <div class="product-image">
+                                <a href="{{product_url($home)}}" class="img"> 
+                                    <img src="{{url(product_image_url($home->gambar1 ))}}" alt="" /> 
+                                    <span class="product-hover">
+                                        <img alt="" src="{{url(product_image_url($home->gambar2 ))}}">          
+                                    </span>
+                                </a>
+                                <!-- <div class="quick-view">
+                                    <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
+                                </div> -->
+                                <div class="sale-tag"> sale </div>
+                                
+                            </div>
+                            <div class="product-content">
+                                <h2 class="product-title"> <a href="#">{{$home->nama}}</a> </h2>
+                                <span class="price"> <b>{{price($home->hargaJual)}}</b> <del>{{price($home->hargaCoret)}} </span>
+                               <!--  <div class="rating">                                                              
+                                    <span class="star active"></span>
+                                    <span class="star active"></span>
+                                    <span class="star active"></span>                                           
+                                    <span class="star"></span>
+                                    <span class="star"></span>                                                
+                                </div> -->
+                                <div class="product-links"> 
+                                    @if(is_outstok($best))
+                                    <a href="/kontak" class="add-to-cart"> <span> Request </span> <i class="icon_cart_alt"></i> </a>
+                                    @else
+                                    <a href="{{product_url($home)}}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
+                                    @endif
+                                    <!-- <a href="#" class="icon_heart_alt"></a>
+                                    <a href="#" class="icon_piechart"></a> -->
                                 </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="collection"></div>
+</section>  
+<!-- / Our Products --> 
 
-<!-- BLOG -->
-<div id="shopify-section-1495685564392" class="shopify-section bingoFramework">
-    <div class="blogsListCarousel">
-        <div class="container">
-            <div class="blogCarousel">
-                <h3 class="bingoHomeTitle">Latest from blog</h3>
-                <div class="bingoContent">
-                    <div class="bingoOwlRow owlCarouselPlay">
-                        <div class="owl-carousel owl-theme" data-nav="true" data-autoplay="false" data-autospeed="10000" data-speed="300" data-columnone="3" data-columntwo="3" data-columnthree="2" data-columnfour="2" data-columnfive="2" style="opacity: 1; display: block;">
-                        
-                            <div class="owl-wrapper-outer">
-                                <div class="owl-wrapper" style="width: 3200px; left: 0px; display: block;">
-                                    @foreach(list_blog(3) as $blog)
-                                    <div class="owl-item active" style="width: 400px;">
-                                        <div class="blogArticle bingoArticleItem">
-                                            <div class="articleImage">
-                                                <a href="{{blog_url($blog)}}">
-                                                    <img class="img-responsive" src="{{imgString($blog->isi)}}" style="width: 100%;" alt="{{$blog->judul}}">
-                                                </a>
-                                            </div>
-                                            <div class="articleContent">
-                                                <h3 class="articleTitle">
-                                                    <a href="{{blog_url($blog)}}">{{$blog->judul}}</a>
-                                                </h3>
-                                                <div class="articleMeta">
-                                                    <span>{{date("d F Y", strtotime($blog->updated_at))}}</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                    
-                                </div>
-                            </div>
-                        </div>
+<!-- Section Two -->
+<section class="promotion clearfix">
+    <div class="">                  
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <!-- <h2 class="section-title pt-30">Hijab Tutorial </h2> -->
+                <div class="flex-item">
+                    <div class="content-block">
+                        <iframe width="675" height="370" src="https://www.youtube.com/embed/r-jMVIfHiSI" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
-                        
-                        
-                    <!-- <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev">prev</div><div class="owl-next">next</div></div></div></div> -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left: 0;">
+                <!-- <h2 class="section-title pt-30">Hijab Review </h2> -->
+                <div class="flex-item">
+                    <div class="content-block">
+                        <iframe width="675" height="370" src="https://www.youtube.com/embed/_5eMVRIcxbM" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </div>
+        <br class="divider-1" />
     </div>
-</div>
+</section>
+<!-- / Section Two -->
+
+<!-- Promotion -->
+<section class="promotion clearfix">   
+    <div class="container">
+        <div class="row">
+        @foreach(vertical_banner() as $key=>$main_banner)
+            
+            <div class="col-sm-6 col-md-4">                                  
+                <div class="collection">
+                    <div class="images">
+                        <img src="{{url(banner_image_url($main_banner->gambar))}}" alt="">
+                    </div>      
+                    <!-- <div class="content-slider">            
+                        <div class="block-title">
+                            <h4 class="title-1"> best<br>for<br>girls</h4>   
+                        </div>
+                        <div class="link"><a href="#">Go<span class="arrow_right"></span></a></div>
+                    </div> -->
+                </div>
+            </div>
+            
+        @endforeach
+        </div>    
+    </div>
+</section>
+<!-- / Promotion -->
+
+ <!-- prod-brands -->
+<section class="prod-brands">
+    <div class="container">  
+        <br class="divider-1" />
+        <div class="brand-slider owl-carousel">
+            @foreach(list_testimonial(7) as $testimonial)
+            <div class="item"> <a href="#"> <img src="assets/img/home-ten/brand_thumb1.jpg" alt="brand" /> </a> </div>
+            @endforeach
+        </div>
+    </div>
+    <br class="divider-1" />
+</section>
+<!-- prod-brands -->

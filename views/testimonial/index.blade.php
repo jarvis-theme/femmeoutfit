@@ -1,54 +1,56 @@
-<section id="bingoBreadcrumbs">
-    <div id="section-bingo-breacrumb-image">
-        <div class="bingoBreadcrumbImage">
-            <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/breadcrumb.jpg') }}">
-        </div>
-        <div class="container">
-        	<nav class="bingoBreadcrumbWrap">
-                <div class="breadcrumbTitle">
-                    <h3>Testimonial</h3>
-                </div>
-                <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a href="/" title="Back to the frontpage" itemprop="item">
-                            <span itemprop="name">Home</span>
-                        </a>
-                        <meta itemprop="position" content="1">
-                    </li>
-                    <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <span itemprop="item"><span itemprop="name">Testimonial</span></span>
-                        <meta itemprop="position" content="2">
-                    </li>
-                </ol>
-        	</nav>
-        </div>
-    </div>
-</section>
+<article class="page-body">
 
-<section id="pageContent">
-    <div class="container">
-        <div class="pageContainer">
-            <h1 class="bingoPageTitle">Testimonial</h1>
-            <div class="pageContent pageAboutUs">
-                <div class="rte">
-                    <h2>What customers say about us</h2>
-                </div>
-                <div id="section-bingo-template-aboutus">
-                    <div class="sectionAboutUs">
-                        @foreach(list_testimonial() as $testi)
-                        <div class="customerReviews mt10">
-                            <div class="customerAvatar">
-                                <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/avatar_customer.jpg') }}">
-                            </div>
-                            <div class="reviewContent">
-                                <div class="reviews">{{ trim($testi->isi) }}</div>
-                                <div class="customerName">{{ $testi->nama }}</div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+    <!--Breadcrumb Section Start-->
+    <section class="breadcrumb-bg mask-overlay bg-img-5">                
+        <div class="container">
+            <div class="site-breadcumb">                        
+                <h1 class="title-1">blog</h1> 
+                <ol class="breadcrumb breadcrumb-menubar">
+                    <li> <a href="/"> Home </a> <a href="#"> blog </a></li>                             
+                </ol>
+            </div>  
         </div>
-    </div>
-</section>
+    </section>
+    <!--Breadcrumb Section End-->
+
+    <section class="wrapper sec-space blog-post blog-thumb">
+        <!-- Blog Post Starts -->
+        <div class="container">
+            <div class="row">
+                <!-- Blog Sidebar Starts -->                     
+                <aside class="blog-sidebar col-sm-4 col-md-3">
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> search </h2>
+                        <div class="widget-content">
+                            <form class="sidebar-search">
+                                <input type="text" placeholder="Type & Hit Enter..." class="form-control">
+                            </form>
+                        </div>
+                    </div>
+
+
+                </aside>                    
+                <!-- Blog Sidebar Starts -->
+
+                <section class="col-sm-8 col-md-8 col-md-offset-1">
+                    @foreach(list_testimonial() as $testi)
+                    <article class="block-inline post-wrap">
+                        <div class="customerAvatar">
+                            <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/avatar_customer.jpg') }}">
+                        </div>
+                        <blockquote>
+                            <p>{{ trim($testi->isi) }}</p>
+                            <h2 title="Source Title" class="title-2">{{ $testi->nama }}</h2>
+                        </blockquote>
+                    </article>
+                    @endforeach
+                    {{ list_testimonial()->links() }}
+                </section>
+            </div>
+
+
+        </div>
+        <!-- / Blog Post Ends -->
+    </section>
+
+</article>

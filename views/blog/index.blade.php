@@ -1,122 +1,161 @@
-﻿<section id="bingoBreadcrumbs">
-    <div id="section-bingo-breacrumb-image">
-        <div class="bingoBreadcrumbImage">
-            <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/breadcrumb.jpg') }}">
-        </div>
-        <div class="container">
-            <nav class="bingoBreadcrumbWrap">
-                <div class="breadcrumbTitle">
-                    <h3>Blog Listing</h3>
-                </div>
-                <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a href="/" title="Back to the frontpage" itemprop="item">
-                            <span itemprop="name">Home</span>
-                        </a>
-                        <meta itemprop="position" content="1">
-                    </li>
-                    <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <span itemprop="item"><span itemprop="name">Blog Listing</span></span>
-                        <meta itemprop="position" content="2">
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</section>
+﻿<article class="page-body">
 
-<section id="pageContent">
-    <div class="container">
-        <div class="templageBlogWrap">
-            <div id="section-bingo-template-blog">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-8 col-md-9">
-                        <div class="blogContainer">
-                            <h1 class="bingoBlogTitle">Blog Listing</h1>
-                            <div class="blogListArticle blogListTemplate">
-                                <div class="blogArticle">
-                                    @if(list_blog(null,@$blog_category)->count() > 0)
-                                        @foreach(list_blog(null,@$blog_category) as $blog)
-                                            @if(!empty(imgString($blog->isi)))
-                                            <div class="articleImage">
-                                                <a href="{{ blog_url($blog) }}">
-                                                    <img class="img-responsive" src="{{ imgString($blog->isi) }}" alt="{{ $blog->judul }}">
-                                                </a>
-                                            </div>
-                                            @endif
-                                            <div class="articleMetaDate">
-                                                <span class="metaDate">{{ date("M d, Y", strtotime($blog->created_at)) }}</span>
-                                            </div>
-                                            <h3><a href="{{ blog_url($blog) }}">{{ $blog->judul }}</a></h3>
-                                            <div class="articleDesc">
-                                                {{ short_description($blog->isi,300) }}
-                                            </div>
-                                            <div><a class="articleBtnMore" href="{{ blog_url($blog) }}">Read more</a></div>
-                                            <br>
-                                        @endforeach
-                                        {{ list_blog(null,@$blog_category)->links() }}
-                                    @else
-                                        <p>Blog not found.</p>
-                                    @endif
-                                </div>
-                            </div>
+    <!--Breadcrumb Section Start-->
+    <section class="breadcrumb-bg mask-overlay bg-img-5">                
+        <div class="container">
+            <div class="site-breadcumb">                        
+                <h1 class="title-1">blog</h1> 
+                <ol class="breadcrumb breadcrumb-menubar">
+                    <li> <a href="/"> Home </a> <a href="#"> blog </a></li>                             
+                </ol>
+            </div>  
+        </div>
+    </section>
+    <!--Breadcrumb Section End-->
+
+    <section class="wrapper sec-space blog-post blog-thumb">
+        <!-- Blog Post Starts -->
+        <div class="container">
+            <div class="row">
+                <!-- Blog Sidebar Starts -->                     
+                <aside class="blog-sidebar col-sm-4 col-md-3">
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> search </h2>
+                        <div class="widget-content">
+                            <form class="sidebar-search">
+                                <input type="text" placeholder="Type & Hit Enter..." class="form-control">
+                            </form>
                         </div>
                     </div>
-                    <aside class="bingoSidebar bingoBlogSidebar col-xs-12 col-sm-4 col-md-3">
-                        @if(recentBlog()->count() > 0)
-                        <div class="blogSidebar">
-                            <h4 class="titleSidebar">Recent Articles</h4>
-                            <div class="bingoContent">
-                                <ul class="listSidebarBlog list-unstyled">
-                                    @foreach(recentBlog() as $artikel)
-                                    <li>
-                                        <div class="sidebarBoxArticle">
-                                            @if(!empty(imgString($artikel->isi)))
-                                            <div class="boxImage">
-                                                <a href="{{ blog_url($artikel) }}" title="{{ short_description($artikel->judul, 40) }}">
-                                                    <img src="{{ imgString($artikel->isi) }}" style="width: 70px;" />
-                                                </a>
-                                            </div>
-                                            @endif
-                                            <div class="boxContent">
-                                                <a href="{{ blog_url($artikel) }}" title="{{ short_description($artikel->judul, 40) }}">{{ short_description($artikel->judul, 40) }}</a>
-                                                <time datetime="{{ date('Y-m-d', strtotime($artikel->created_at)) }}">{{ date("M d, Y", strtotime($artikel->created_at)) }}</time>
+                    @if(list_blog_category()->count() > 0)
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> CATEGORIES </h2>
+                        <div class="widget-content">
+                            <ul class="category">
+
+                                @foreach(list_blog_category() as $kat)
+                                <li>
+                                    <a href="{{ blog_category_url($kat) }}" title="{{ $kat->nama }}">{{ $kat->nama }}</a>
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                    </div>
+                    @endif
+
+                    <!-- <div class="widget-wrap"> 
+                        <h2 class="widget-title"> latest tweets </h2>
+                        <div class="widget-content">
+                            <div class="recent-tweets">
+                                <p>free stock footage from <a href="#">@videvo acani</a> 
+                                    <a href="#" class="red-color">http://t.co/L1mGsTovdZ</a>
+                                </p> 
+                                <p>  
+                                    <a href="#">#filmmaking</a> <a href="#">#stock</a> <a href="#">#footage</a> <a href="#">#freebie</a> 
+                                </p>
+                                <small class="title-2">a day ago</small>
+                            </div>
+                            <div class="recent-tweets">
+                                <p>                                            
+                                    Installation with one clik so easy
+                                    <a href="#" class="red-color"> http://t.co/nvpUXOWRCp </a> <a href="#">@YouTube</a>
+                                </p> 
+
+                                <small class="title-2"> two day ago</small>
+                            </div>
+                            <p> <a href="#" class="title-2 view-all">view all tweets <span class="arrow_right"></span> </a> </p>
+                        </div>
+                    </div> -->
+
+                    @if(recentBlog()->count() > 0)
+                        <div class="widget-wrap"> 
+                            <h2 class="widget-title"> recent post </h2>
+                            <div class="widget-content recent-blog">
+                                @foreach(recentBlog() as $artikel)
+                                    <div class="recent-wrap">
+                                        <div class="recent">
+                                            <div class="post-title"> <a href="{{ blog_url($artikel) }}">{{ short_description($artikel->judul, 40) }}</a> </div>
+                                            <div class="post-meta"> <a href="{{ blog_url($artikel) }}"> 14th, Nov, 2017 </a> </div>                                                   
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    
+
+                    <!-- <div class="widget-wrap"> 
+                        <h2 class="widget-title"> popular tags </h2>
+                        <div class="widget-content tag-cloud">
+                            <a href="#" title=""> Amazing</a>
+                            <a href="#" title="">Envato</a>
+                            <a href="#" title="">Themes</a>
+                            <a href="#" title="">Clean</a>
+                            <a href="#" title=""> WordPress </a>
+                        </div>
+                    </div> -->
+
+                </aside>                    
+                <!-- Blog Sidebar Starts -->
+
+                <section class="col-sm-8 col-md-8 col-md-offset-1">
+                    @if(list_blog(null,@$blog_category)->count() > 0)
+                        @foreach(list_blog(null,@$blog_category) as $blog)
+                            <article class="block-inline post-wrap">
+                                <div class="row">
+                                    @if(!empty(imgString($blog->isi)))
+                                        <div class="col-sm-12 col-md-6">
+                                            <div class="post-media">
+                                                <a href="{{ blog_url($blog) }}"> <img src="{{ imgString($blog->isi) }}" alt="{{ $blog->judul }}"> </a>
                                             </div>
                                         </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                                    @endif
+                                    @if(!empty(imgString($blog->isi)))
+                                    <div class="col-sm-12 col-md-6">
+                                    @else
+                                    <div class="col-sm-12 col-md-12">
+                                    @endif
+                                        <div class="post-header">
+                                            <h2 class="post-title">
+                                                <a href="{{ blog_url($blog) }}"> {{ $blog->judul }} </a>
+                                            </h2>
+                                            <ul class="list-inline post-meta">
+                                                <li> {{ date("M d, Y", strtotime($blog->created_at)) }} </li> 
+                                                <li> by <a href="#"> Admin </a> </li> 
+                                                <li> in <a href="#"> Print </a> </li>
+                                            </ul>
+                                        </div>
+                                        <div class="post-body">
+                                            {{ short_description($blog->isi,300) }}
+                                        </div>
+                                        <div class="post-footer">
+                                            <a class="title-2 link" href="{{ blog_url($blog) }}"> read more <i class="arrow_right"></i> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                        <div class="block-inline pagination-wrap text-center">
+                            <!-- <ul class="pagination-1 font-2">  
+                                <li> <a href="#" class="active"> 1 </a> </li>
+                                <li> <a href="#"> 2 </a> </li>
+                                <li> <a href="#"> 3 </a> </li>   
+                                <li> <a href="#"> ... </a> </li>   
+                                <li> <a href="#"> 5 </a> </li>   
+                                <li class="nxt"> <a href="#"> <i class="fa fa-angle-right"></i> </a> </li>
+                            </ul> -->
+                            {{ list_blog(1,@$blog_category)->links() }}
                         </div>
-                        @endif
-                        @if(vertical_banner()->count() > 0)
-                        <div class="blogSidebar hidden-xs">
-                            @foreach(vertical_banner() as $banner)
-                            <div class="bingoBanner">
-                                <a href="{{ url($banner->url) }}">
-                                    <img class="img-responsive" src="{{ banner_image_url($banner->gambar) }}">
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
-                        @endif
-                        @if(list_blog_category()->count() > 0)
-                        <div class="blogSidebar blogTags">
-                            <h4 class="titleSidebar">Blog Category</h4>
-                            <div class="bingoContent">
-                                <ul class="blogTagsList list-inline">
-                                    @foreach(list_blog_category() as $kat)
-                                    <li>
-                                        <a href="{{ blog_category_url($kat) }}" title="{{ $kat->nama }}">{{ $kat->nama }}</a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-                    </aside>
-                </div>
+                    @else
+                        <p>Blog not found.</p>
+                    @endif
+                </section>
             </div>
+
+
         </div>
-    </div>
-</section>
+        <!-- / Blog Post Ends -->
+    </section>
+
+</article>

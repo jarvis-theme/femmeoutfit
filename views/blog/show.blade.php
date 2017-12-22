@@ -1,145 +1,175 @@
-<section id="bingoBreadcrumbs">
-    <div id="section-bingo-breacrumb-image">
-        <div class="bingoBreadcrumbImage">
-            <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/breadcrumb.jpg') }}">
-        </div>
-        <div class="container">
-            <nav class="bingoBreadcrumbWrap">
-                <div class="breadcrumbTitle">
-                    <h3>{{ $detailblog->judul }}</h3>
-                </div>
-                <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a href="/" title="Back to the frontpage" itemprop="item">
-                            <span itemprop="name">Home</span>
-                        </a>
-                        <meta itemprop="position" content="1">
-                    </li>
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a href="{{ url('blog') }}" title="Blog Listing" itemprop="item">
-                            <span itemprop="name">Blog Listing</span>
-                        </a>
-                        <meta itemprop="position" content="2">
-                    </li>
-                    <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <span itemprop="item"><span itemprop="name">{{ $detailblog->judul }}</span></span>
-                        <meta itemprop="position" content="3">
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</section>
+<article class="page-body">
 
-<section id="pageContent">
-    <div class="container">
-        <div class="templageArticleWrap">
-            <div id="shopify-section-bingo-template-article" class="shopify-section"><div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-9">
-                    <article class="articleItem" itemscope="" itemtype="http://schema.org/Article">
-                        <meta itemscope="" itemprop="mainEntityOfPage" itemtype="https://schema.org/WebPage" itemid="https://google.com/article">
-                        <meta itemprop="headline" content="Integer pharetra mattis libero et ornare">
-                        <meta itemprop="author" content="Bingo Max Admin">
-                        <meta itemprop="datePublished" content="23 May, 2017">
-                        <meta itemprop="dateModified" content="23 May, 2017">
-                        <div class="hidden" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject">
-                            <meta itemprop="url" content="http://cdn.shopify.com/s/files/1/2027/9309/articles/max_bloglisting4.jpg?v=1495698785">
-                            <meta itemprop="width" content="1170">
-                            <meta itemprop="height" content="800">
+    <!--Breadcrumb Section Start-->
+    <section class="breadcrumb-bg mask-overlay bg-img-5">                
+        <div class="container">
+            <div class="site-breadcumb">                        
+                <h1 class="title-1">{{ $detailblog->judul }}</h1> 
+                <ol class="breadcrumb breadcrumb-menubar">
+                    <li> <a href="/"> Home </a> <a href="{{ url('blog') }}"> blog </a> {{ $detailblog->judul }} </li>                             
+                </ol>
+            </div>  
+        </div>
+    </section>
+    <!--Breadcrumb Section End-->
+
+    <section class="wrapper sec-space blog-single">
+        <!-- Blog Post Starts -->
+        <div class="container">
+            <div class="row">
+                <!-- Blog Sidebar Starts -->                     
+                <aside class="blog-sidebar col-sm-4 col-md-3">
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> search </h2>
+                        <div class="widget-content">
+                            <form class="sidebar-search">
+                                <input type="text" placeholder="Type & Hit Enter..." class="form-control">
+                            </form>
                         </div>
-                        <div class="hidden" itemprop="publisher" itemscope="" itemtype="https://schema.org/Organization">
-                            <div itemprop="logo" itemscope="" itemtype="https://schema.org/ImageObject">
-                                <meta itemprop="url" content="http://cdn.shopify.com/s/files/1/2027/9309/files/logo.png?14124462035515045251">
-                            </div>
-                            <meta itemprop="name" content="Bingo Max Admin">
-                        </div>
-                        <header class="articleHeader">
-                            <h1 class="bingoArticleTitle">Integer pharetra mattis libero et ornare</h1>
-                            <div class="articleMeta">Posted by <strong>Bingo Max Admin</strong> | <time datetime="{{ date('Y-m-d', strtotime($detailblog->created_at)) }}">{{ date("M d, Y", strtotime($detailblog->created_at)) }}</time></div>
-                        </header>
-                        @if(!empty(imgString($detailblog->isi)))
-                        <div class="articleFeaturedImage">
-                            <img class="img-responsive" src="{{ imgString($detailblog->isi) }}" alt="{{ $detailblog->isi }}" />
-                        </div>
-                        @endif
-                        <div class="rte" itemprop="description">
-                            {{ $detailblog->isi }}
-                        </div>
-                        <div class="articleTags">
-                            <span>Tags:</span>
-                            <ul class="blogTagsList list-inline" style="padding: 0; display: inline;">
-                                {{ getTags('<li></li>,',$detailblog->tags) }} 
+                    </div>
+                    @if(list_blog_category()->count() > 0)
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> CATEGORIES </h2>
+                        <div class="widget-content">
+                            <ul class="category">
+
+                                @foreach(list_blog_category() as $kat)
+                                <li>
+                                    <a href="{{ blog_category_url($kat) }}" title="{{ $kat->nama }}">{{ $kat->nama }}</a>
+                                </li>
+                                @endforeach
+
                             </ul>
                         </div>
-                        <div class="articleButtonExtend clearfix">
-                            @if(prev_blog($detailblog))
-                            <div class="btnExtendLeft">
-                                <a href="{{ blog_url(prev_blog()) }}">Older Post</a>
+                    </div>
+                    @endif
+
+                    <!-- <div class="widget-wrap"> 
+                        <h2 class="widget-title"> latest tweets </h2>
+                        <div class="widget-content">
+                            <div class="recent-tweets">
+                                <p>free stock footage from <a href="#">@videvo acani</a> 
+                                    <a href="#" class="red-color">http://t.co/L1mGsTovdZ</a>
+                                </p> 
+                                <p>  
+                                    <a href="#">#filmmaking</a> <a href="#">#stock</a> <a href="#">#footage</a> <a href="#">#freebie</a> 
+                                </p>
+                                <small class="title-2">a day ago</small>
                             </div>
-                            @endif
-                            @if(next_blog($detailblog))
-                            <div class="btnExtendRight">
-                                <a href="{{ blog_url(next_blog()) }}">Newer Post</a>
+                            <div class="recent-tweets">
+                                <p>                                            
+                                    Installation with one clik so easy
+                                    <a href="#" class="red-color"> http://t.co/nvpUXOWRCp </a> <a href="#">@YouTube</a>
+                                </p> 
+
+                                <small class="title-2"> two day ago</small>
                             </div>
-                            @endif
+                            <p> <a href="#" class="title-2 view-all">view all tweets <span class="arrow_right"></span> </a> </p>
                         </div>
-                        <div>
-                            {{ $fbscript }}
-                            {{ fbcommentbox(blog_url($detailblog), '100%', '5', 'light') }}
+                    </div> -->
+
+                    @if(recentBlog()->count() > 0)
+                        <div class="widget-wrap"> 
+                            <h2 class="widget-title"> recent post </h2>
+                            <div class="widget-content recent-blog">
+                                @foreach(recentBlog() as $artikel)
+                                    <div class="recent-wrap">
+                                        <div class="recent">
+                                            <div class="post-title"> <a href="{{ blog_url($artikel) }}">{{ short_description($artikel->judul, 40) }}</a> </div>
+                                            <div class="post-meta"> <a href="{{ blog_url($artikel) }}"> 14th, Nov, 2017 </a> </div>                                                   
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    
+
+                    <!-- <div class="widget-wrap"> 
+                        <h2 class="widget-title"> popular tags </h2>
+                        <div class="widget-content tag-cloud">
+                            <a href="#" title=""> Amazing</a>
+                            <a href="#" title="">Envato</a>
+                            <a href="#" title="">Themes</a>
+                            <a href="#" title="">Clean</a>
+                            <a href="#" title=""> WordPress </a>
+                        </div>
+                    </div> -->
+
+                </aside>                     
+                <!-- Blog Sidebar Starts -->
+
+                <section class="col-sm-8 col-md-8 col-md-offset-1">
+
+                    <article class="block-inline">
+                        <div class="single-post-wrap">
+                            <div class="post-media">
+                                <h1 class="title-1">{{ $detailblog->judul }}</h1>                                
+                                <ul class="list-inline post-meta pt-20">
+                                    <li> Posted at <a href="#"> {{ date("M d, Y", strtotime($blog->created_at)) }}7 </a> </li> 
+                                    <li> by <a href="#"> Admin </a> </li> 
+                                    <li> in <a href="#"> Print </a> </li>
+                                </ul>
+                            </div>                                      
+                            <div class="post-body">
+                                {{ $detailblog->isi }}
+                            </div>
+                            <hr class="divider">
+                            <div class="post-footer">
+                                <div class="tag-cloud">
+                                    <span class="title-2">Tags:</span>
+                                    {{ getTags('<a></a>',$detailblog->tags)}}                                     
+                                </div>
+                                <div class="social-media">
+                                    <span class="title-2">Share:</span>
+                                    <ul class="list-items">
+                                        <li> <a class="social_facebook" href="#"></a> </li>
+                                        <li> <a class="social_twitter" href="#"></a> </li>
+                                        <li> <a class="social_pinterest" href="#"></a> </li>
+                                        <li> <a class="social_instagram" href="#"></a> </li>
+                                        <li> <a class="social_rss" href="#"></a> </li>
+                                    </ul>
+                                </div>                                           
+                            </div>
+                            <hr class="divider">
+                            <div class="post-author row ptb-20">
+                                <div class="col-md-3 col-sm-4 col-xs-3">
+                                    <img src="assets/img/common/author-1.jpg" alt="">
+                                </div>
+                                <div class="col-md-9 col-sm-8 col-xs-9">
+                                    <div class="author-info">
+                                        <h2 class="title-2">daniel craff </h2>
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, tum teveniet, 
+                                            eligendi et nobis neque minus mollitia sit repudiandae adin repellendus recusandae blanditiis praesentium 
+                                            vitae ab sint laboriois sam nisi reiciendis deleniti tenetur molestiae. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="divider-2">
+                        <div class="comment-form-wrap">
+                            <h2 class="section-title"> leave a comment </h2>
+                            {{ pluginComment(blog_url($detailblog), @$detailblog) }}
                         </div>
                     </article>
+
+
+                    <div class="block-inline pt-50">
+                        <div class="single-page-pagination font-2">
+                            @if(prev_blog($detailblog))
+                            <div class="prev"> <a href="{{ blog_url(prev_blog()) }}"> <i class="arrow_left"></i> Prev </a> </div>
+                            @endif
+                            @if(next_blog($detailblog))
+                            <div class="next"> <a href="{{ blog_url(next_blog()) }}"> Next <i class="arrow_right"></i> </a> </div>
+                            @endif
+                        </div>
                     </div>
-                    <aside class="bingoSidebar bingoBlogSidebar col-xs-12 col-sm-4 col-md-3">
-                        @if(recentBlog()->count() > 0)
-                        <div class="blogSidebar">
-                            <h4 class="titleSidebar">Recent Articles</h4>
-                            <div class="bingoContent">
-                                <ul class="listSidebarBlog list-unstyled">
-                                    @foreach(recentBlog() as $artikel)
-                                    <li>
-                                        <div class="sidebarBoxArticle">
-                                            @if(!empty(imgString($artikel->isi)))
-                                            <div class="boxImage">
-                                                <a href="{{ blog_url($artikel) }}" title="{{ short_description($artikel->judul, 40) }}">
-                                                    <img class="img-responsive" src="{{ imgString($artikel->isi) }}" alt="{{ $artikel->isi }}" style="width: 70px;" />
-                                                </a>
-                                            </div>
-                                            @endif
-                                            <div class="boxContent">
-                                                <a href="{{ blog_url($artikel) }}" title="{{ short_description($artikel->judul, 40) }}">{{ short_description($artikel->judul, 40) }}</a>
-                                                <time datetime="{{ date('Y-m-d', strtotime($artikel->created_at)) }}">{{ date("M d, Y", strtotime($artikel->created_at)) }}</time>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-                        @if(vertical_banner()->count() > 0)
-                        <div class="blogSidebar hidden-xs">
-                            @foreach(vertical_banner() as $banner)
-                            <div class="bingoBanner">
-                                <a href="{{url($banner->url)}}">
-                                    {{ HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('class'=>'img-responsive')) }}
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
-                        @endif
-                        @if($detailblog->tags != "")
-                        <div class="blogSidebar blogTags">
-                            <h4 class="titleSidebar">Articles Tags</h4>
-                            <div class="bingoContent">
-                                <ul class="blogTagsList list-inline">
-                                    {{ getTags('<li></li>',$detailblog->tags)}} 
-                                </ul>
-                            </div>
-                        </div>
-                        @endif
-                    </aside>
-                </div>
+                </section>
             </div>
+
+
         </div>
-    </div>
-</section>
+        <!-- / Blog Post Ends -->
+    </section>
+
+</article>

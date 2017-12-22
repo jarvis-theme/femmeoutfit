@@ -1,101 +1,108 @@
-<section id="bingoBreadcrumbs">
-    <div id="bingo-breacrumb-image">
-        <div class="bingoBreadcrumbImage">
-            <img class="img-responsive" alt="breadcrumb" src="{{ url(dirTemaToko().'celebandco/assets/img/breadcrumb.jpg') }}">
-        </div>
-        <div class="container">
-	       <nav class="bingoBreadcrumbWrap">
-                <div class="breadcrumbTitle">
-                    <h3>Search</h3>
-                </div>
-                <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a href="/" title="Back to the frontpage" itemprop="item">
-                            <span itemprop="name">Home</span>
-                        </a>
-                        <meta itemprop="position" content="1">
-                    </li>
-                    <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <span itemprop="item"><span itemprop="name">Search</span></span>
-                        <meta itemprop="position" content="2">
-                    </li>
-                </ol>
-	       </nav>
-        </div>
-    </div>
-</section>
+<article class="page-body">
 
-<section id="pageContent">
-    <div class="container">
-        <div class="collectionContainer">
+    <!--Breadcrumb Section Start-->
+    <section class="breadcrumb-bg mask-overlay">                
+        <div class="container">
+            <div class="site-breadcumb">                        
+                <h1 class="title-1"> Search </h1> 
+                <ol class="breadcrumb breadcrumb-menubar">
+                    <li> <a href="/"> Home </a> <a href="{{url('produk')}}"> Shop  </a> Search </li>                             
+                </ol>
+            </div>  
+        </div>
+    </section>
+    <!--Breadcrumb Section End-->
+
+    <section class="wrapper sec-space">
+        <!-- Single Product Starts -->
+        <div class="container">
             <div class="row">
-                <aside id="bingoSidebar" class="bingoSidebar col-xs-12 col-sm-4 col-md-3">
-                    @if(list_category()->count() > 0)
-                    <div id="sidebartop">
-                        <div id="bingoCategories" class="bingoCategoriesSidebar">
-                            <h3 class="titleSidebar">Categories</h3>
-                            <div class="bingoContent">
-                                @foreach(list_category() as $side_menu)
-                                    @if($side_menu->parent == '0')
-                                    <div class="itemCategory">
-                                        @if($side_menu->anak->count() < 1)
-                                        <h4 class="cateTitle">
-                                            <a class="cateItem" href="{{ category_url($side_menu) }}">{{ $side_menu->nama }}</a>
-                                        </h4>
-                                        @else
-                                        <h4 class="cateTitle">
-                                            <a class="cateItem hasSubCategory collapsed" data-toggle="collapse" href="#subCategory{{$side_menu->id}}">{{ $side_menu->nama }}</a>
-                                        </h4>
-                                        <div id="subCategory{{$side_menu->id}}" class="collapse">
-                                            <div class="panel-body">
-                                                <ul class="listSidebar list-unstyled">
-                                                    @foreach($side_menu->anak as $submenu)
-                                                    @if($submenu->parent == $side_menu->id)
-                                                    <li><a href="{{ category_url($submenu) }}" title="{{ $submenu->nama }}">{{ $submenu->nama }}</a></li>
-                                                    @endif
+                <!-- Products Sidebar Starts --> 
+                <aside class="prod-sidebar col-sm-4 col-md-3">
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> CATEGORIES </h2>
+
+                        <div class="widget-content">
+                            <div class="panel-group widget-panel" id="accordion">
+                                @foreach (list_category() as $kat)
+                                    @if($kat->parent=='0')
+                                        @if($kat->anak->count())
+                                        <div class="panel">
+                                            <div class="widget-heading">                              
+                                                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#{{strtolower($kat->nama)}}"> {{ucfirst($kat->nama)}} </a>
+                                            </div>
+                                            
+                                            <div id="{{strtolower($kat->nama)}}" class="panel-collapse collapse">
+                                                <div class="wid-panel-con">
+                                                    <ul style="margin-left: 25px;">
+                                                    @foreach(list_category() as $submenu)
+                                                        @if ($submenu->parent==$kat->id)
+                                                        <li>
+                                                            <a href="{{category_url($submenu)}}">{{ucfirst($submenu->nama)}}</a>
+                                                            @if($submenu->anak->count() != 0)
+                                                            <ul id="{{strtolower($submenu->nama)}}" class="cateogry-filters-list" style="margin-left: 0;margin-top: 10px;">
+                                                                @foreach($submenu->anak as $submenu2)
+                                                                @if($submenu2->parent == $submenu->id)
+                                                                <ol style="margin-bottom: 4px;">
+                                                                    <a href="{{category_url($submenu2)}}" class="active" style="text-decoration: none;">{{ucfirst($submenu2->nama)}}</a>
+                                                                </ol>
+                                                                @endif
+                                                                @endforeach
+                                                            </ul>
+                                                            @endif
+                                                        </li>
+                                                        @endif
                                                     @endforeach
-                                                </ul>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
+                                        @else
+                                        <ul class="category">                                            
+                                            <li> <a href="{{category_url($kat)}}"> {{ucfirst($kat->nama)}} </a> </li>
+                                        </ul>
                                         @endif
-                                    </div>
                                     @endif
-                                @endforeach
-                            </div>
+                                @endforeach 
                         </div>
                     </div>
-                    @endif
-                    @if(best_seller()->count() > 0)
-                    <div id="sidebarbanner">
-                        <div class="binBlockSidebar bingoProductsSidebar">
-                            <h4 class="titleSidebar">Featured Products</h4>
-                            <div class="bingoContent">
-                                @foreach(best_seller() as $best)
-                                <div class="bingoProBlock">
-                                    <div class="proHImage">
-                                        <a class="proFeaturedImage" href="{{ product_url($best) }}">
-                                            <img class="img-responsive" alt="{{ $best->nama }}" src="{{ product_image_url($best->gambar1,'thumb') }}">
-                                        </a>
-                                    </div>
-                                    <div class="proContent">
-                                        <h5 class="proName"><a href="{{ product_url($best) }}">{{ $best->nama }}</a></h5>
-                                        <div class="proPrice">
-                                            <div class="priceProduct priceSale">{{ price($best->hargaJual) }}</div>
-                                        </div>
-                                    </div>
+                    <div class="widget-wrap filter-option"></div>
+                    <div class="widget-wrap"> 
+                        <h2 class="widget-title"> recent products </h2>
+                        <div class="widget-content recent-prod">
+
+                            @foreach(best_seller() as $best)
+                            <div class="recent-wrap">                   
+                                <div class="image">                                                                                                                 
+                                    <a href="{{ product_url($best) }}"> <img class="img-responsive img-recent" src="{{ product_image_url($best->gambar1,'thumb') }}" alt=""/> </a>
+                                </div>                                               
+
+                                <div class="product-content">
+                                    <h2 class="product-title"> <a href="{{ product_url($best) }}">{{$best->nama}}</a> </h2>
+                                    <span class="price"> <b>{{ price($best->hargaJual) }}</b><br> <del>{{ price($best->hargaCoret) }}</del> </span>
                                 </div>
-                                @endforeach
                             </div>
+                            @endforeach    
+
                         </div>
                     </div>
-                    @endif
-                </aside>
-                <div id="proListCollection" class="bingoCenterColumn col-xs-12 col-sm-8 col-md-9">
-                    <div id="bingo-template-collections">
-                        <div class="collBoxTop">
-                            <h1 class="headerCollection hidden">Product</h1>
+                </aside>    
+                <!-- Products Sidebar Ends --> 
+
+                <!-- Products Categories Starts --> 
+                <div class="col-md-9 col-sm-8 categories">
+                    <div class="sorter-bar block-inline">
+                        <div class="show-result font-2">
+                            Showing 1 to {{Input::get('show')!=""?Input::get('show'):12}} of 17 total
                         </div>
-                        <div class="collBoxProducts">
+                        
+                    </div>     
+
+                    <div class="tab-content">
+
+                        <!-- Product List View Starts -->
+                        <div id="list-view" class="tab-pane fade" role="tabpanel">                                     
+                            
                             @if(count($hasilpro) > 0)
                             <div id="bingoProList" class="proList grid">
                                 <div class="bingoFlexRow flexRow">
@@ -186,9 +193,73 @@
                                 @endforeach
                             </div>
                             @endif
+                            
+                            <div class="row listview-wrap">
+                                <div class="col-lg-4 col-md-5 col-sm-12">
+                                    <div class="product-item">
+                                        <div class="product-image">
+                                            <a href="#" class="img"> 
+                                                <img src="assets/img/common/product/prod-1.jpg" alt="" /> 
+                                                <span class="product-hover">
+                                                    <img alt="" src="assets/img/common/product/prod-flip-1.jpg">          
+                                                </span>
+                                            </a>
+                                            <ul class="color-swatch-item">
+                                                <li> <a href="#"> <img src="assets/img/common/product/gray.png" alt="" /> </a> </li>
+                                                <li> <a href="#"> <img src="assets/img/common/product/black.png" alt="" /> </a> </li>
+                                            </ul>
+                                            <div class="quick-view">
+                                                <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-7 col-sm-12">
+                                    <div class="product-item">
+                                        <div class="product-content">
+                                            <h2 class="product-title"> <a href="#">samurai t-shirt</a> </h2>
+                                            <span class="price"> <b>$45.05</b> <del></del> </span>
+                                            <div class="rating">                                                              
+                                                <span class="star active"></span>
+                                                <span class="star active"></span>
+                                                <span class="star active"></span>                                           
+                                                <span class="star active"></span>
+                                                <span class="star"></span>                                                
+                                            </div>
+                                            <div class="discription">
+                                                <p>Coupling a blended linen construction with tailored style, the River Island HR Jasper ro Blazer will imprint a touch of dapper charm into your after-dark wardrobe. Tuxedo ise Suspendisse feugiat condimentum ex, sed venenatis sapien. Mauris nisi ipsum, pellenti ntesque et efficitur nec, feugiat vitae erat. Pellentesque ultrices libero lacus.</p>
+                                            </div>
+                                            <div class="product-links"> 
+                                                <a href="#" class="add-to-cart"> <span> Add To Cart </span> <i class="icon_cart_alt"></i> </a>
+                                                <a href="#" class="icon_heart_alt"></a>
+                                                <a href="#" class="icon_piechart"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-12">
+                                <div class="block-inline pagination-wrap text-center">
+                                    <ul class="pagination-1 font-2">  
+                                        <li> <a href="#" class="active"> 1 </a> </li>
+                                        <li> <a href="#"> 2 </a> </li>
+                                        <li> <a href="#"> 3 </a> </li>   
+                                        <li> <a href="#"> ... </a> </li>   
+                                        <li> <a href="#"> 5 </a> </li>   
+                                        <li class="nxt"> <a href="#"> <i class="fa fa-angle-right"></i> </a> </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                        <!-- Product List View Ends -->
+
                     </div>
+
                 </div>
+                <!-- Products Description Starts --> 
             </div>
         </div>
-</section>
+        <!-- / Single Product Ends -->
+    </section>
+
+</article>
