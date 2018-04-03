@@ -79,7 +79,7 @@
 
                                 <div class="product-content">
                                     <h2 class="product-title"> <a href="{{ product_url($best) }}">{{$best->nama}}</a> </h2>
-                                    <span class="price"> <b>{{ price($best->hargaJual) }}</b><br> <del>{{ price($best->hargaCoret) }}</del> </span>
+                                    <span class="price"> <b>{{ price($best) }}</b><br> <del>{{ price($best->hargaCoret,null,1) }}</del> </span>
                                 </div>
                             </div>
                             @endforeach    
@@ -93,7 +93,18 @@
                 <div class="col-md-9 col-sm-8 categories">
                     <div class="sorter-bar block-inline">
                         <div class="show-result font-2">
-                            Showing 1 to {{Input::get('show')!=""?Input::get('show'):12}} of 17 total
+                            Showing {{$hasilpro->count()}} to {{Input::get('show')!=""?Input::get('show'):$hasilpro->count()}} of {{$hasilpro->count()}} total
+                        </div>
+                        
+                        <div class="tabs-btns"> 
+                            <ul class="tabination view-tabs">
+                                <li> View </li>
+                                <li class="active">
+                                    <a href="#list-view" data-toggle="tab">
+                                        <i class="fa fa-th-list"></i>
+                                    </a>
+                                </li>
+                            </ul>                                       
                         </div>
                         
                     </div>     
@@ -101,54 +112,61 @@
                     <div class="tab-content">
 
                         <!-- Product List View Starts -->
-                        <div id="list-view" class="tab-pane fade" role="tabpanel">                                     
+                        <div id="list-view" class="tab-pane fade active in" role="tabpanel">                                     
                             
                             @if(count($hasilpro) > 0)
-                            <div id="bingoProList" class="proList grid">
-                                <div class="bingoFlexRow flexRow">
-                                    @foreach($hasilpro as $produks)
-                                    <div class="filerProductPrice col-sp-12 col-xs-6 col-md-4" data-price="{{ $produks->hargaJual }}">
-                                        <div class="bingoProBlock">
-                                            <div class="proHImage">
-                                                <a class="proFeaturedImage" href="{{ product_url($produks) }}">
-                                                    <img class="img-responsive" alt="{{ $produks->nama }}" src="{{ product_image_url($produks->gambar1,'medium') }}">
-                                                    <span class="hidden-sm hidden-xs">
-                                                        @if(!empty($produks->gambar2))
-                                                        <img class="img-responsive" alt="{{ $produks->nama }}" src="{{ product_image_url($produks->gambar2,'medium') }}">
-                                                        @elseif(!empty($produks->gambar3))
-                                                        <img class="img-responsive" alt="{{ $produks->nama }}" src="{{ product_image_url($produks->gambar3,'medium') }}">
-                                                        @elseif(!empty($produks->gambar4))
-                                                        <img class="img-responsive" alt="{{ $produks->nama }}" src="{{ product_image_url($produks->gambar4,'medium') }}">
-                                                        @endif
+                                @foreach($hasilpro as $produks)
+                                <div class="row listview-wrap">
+                        
+                                    <div class="col-lg-4 col-md-5 col-sm-12">
+                                        <div class="product-item">
+                                            <div class="product-image">
+                                                <a href="#" class="img"> 
+                                                    <img alt="{{ $produks->nama }}" src="{{ product_image_url($produks->gambar1) }}">
+                                                    <span class="product-hover">
+                                                        <img alt="{{ $produks->nama }}" src="{{ product_image_url($produks->gambar2) }}">
                                                     </span>
                                                 </a>
+                                                <!--div class="quick-view">
+                                                    <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
+                                                </div>-->
                                             </div>
-                                            <div class="proContent">
-                                                <h5 class="proName">
-                                                    <a href="{{ product_url($produks) }}">{{ short_description($produks->nama, 25) }}</a>
-                                                </h5>
-                                                <div class="proPrice">
-                                                    <div class="priceProduct priceSale">{{ price($produks->hargaJual) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-12">
+                                        <div class="product-item">
+                                            <div class="product-content">
+                                                <h2 class="product-title"> <a href="#">{{ $produks->nama }}</a> </h2>
+                                                <span class="price"> <b>{{ price($produks->hargaJual) }}</b> <del>{{ $produks->hargaCoret ? price($produks->hargaCoret):'' }}</del> </span>
+                                                <!--<div class="rating">                                                              
+                                                    <span class="star active"></span>
+                                                    <span class="star active"></span>
+                                                    <span class="star active"></span>                                           
+                                                    <span class="star active"></span>
+                                                    <span class="star"></span>                                                
+                                                </div>-->
+                                                <div class="discription">
+                                                    <p>{{ $produks->dmt }}</p>
                                                 </div>
-                                                <div class="proButton mb20">
-                                                    <a class="btn btnAddToCart" href="{{ product_url($produks) }}">
-                                                        <i class="fa fa-shopping-cart"></i>
-                                                        <span>View</span>
-                                                    </a>
+                                                <div class="product-links"> 
+                                                    <a href="{{ product_url($produks) }}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
+                                                    <!--<a href="#" class="icon_heart_alt"></a>
+                                                    <a href="#" class="icon_piechart"></a>-->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach
+                                   
                                 </div>
-                            </div>
+                                @endforeach
                             @endif
+                            
                             @if(count($hasilhal) > 0 || count($hasilblog) > 0)
                             <div class="bingoFlexRow flexRow">
                                 @foreach($hasilblog as $blog)
                                 <div class="col-sp-12 col-xs-6 col-md-4">
                                     <div class="blogArticle mt20">
-                                        @if(!empty(imgString($blog->isi)))
+                                        @if((imgString($blog->isi)))
                                         <div class="articleImage">
                                             <a href="{{ blog_url($blog) }}">
                                                 <img class="img-responsive" src="{{ imgString($blog->isi) }}" alt="{{ $blog->judul }}">
@@ -194,60 +212,9 @@
                             </div>
                             @endif
                             
-                            <div class="row listview-wrap">
-                                <div class="col-lg-4 col-md-5 col-sm-12">
-                                    <div class="product-item">
-                                        <div class="product-image">
-                                            <a href="#" class="img"> 
-                                                <img src="assets/img/common/product/prod-1.jpg" alt="" /> 
-                                                <span class="product-hover">
-                                                    <img alt="" src="assets/img/common/product/prod-flip-1.jpg">          
-                                                </span>
-                                            </a>
-                                            <ul class="color-swatch-item">
-                                                <li> <a href="#"> <img src="assets/img/common/product/gray.png" alt="" /> </a> </li>
-                                                <li> <a href="#"> <img src="assets/img/common/product/black.png" alt="" /> </a> </li>
-                                            </ul>
-                                            <div class="quick-view">
-                                                <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-md-7 col-sm-12">
-                                    <div class="product-item">
-                                        <div class="product-content">
-                                            <h2 class="product-title"> <a href="#">samurai t-shirt</a> </h2>
-                                            <span class="price"> <b>$45.05</b> <del></del> </span>
-                                            <div class="rating">                                                              
-                                                <span class="star active"></span>
-                                                <span class="star active"></span>
-                                                <span class="star active"></span>                                           
-                                                <span class="star active"></span>
-                                                <span class="star"></span>                                                
-                                            </div>
-                                            <div class="discription">
-                                                <p>Coupling a blended linen construction with tailored style, the River Island HR Jasper ro Blazer will imprint a touch of dapper charm into your after-dark wardrobe. Tuxedo ise Suspendisse feugiat condimentum ex, sed venenatis sapien. Mauris nisi ipsum, pellenti ntesque et efficitur nec, feugiat vitae erat. Pellentesque ultrices libero lacus.</p>
-                                            </div>
-                                            <div class="product-links"> 
-                                                <a href="#" class="add-to-cart"> <span> Add To Cart </span> <i class="icon_cart_alt"></i> </a>
-                                                <a href="#" class="icon_heart_alt"></a>
-                                                <a href="#" class="icon_piechart"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-sm-12 col-lg-12">
                                 <div class="block-inline pagination-wrap text-center">
-                                    <ul class="pagination-1 font-2">  
-                                        <li> <a href="#" class="active"> 1 </a> </li>
-                                        <li> <a href="#"> 2 </a> </li>
-                                        <li> <a href="#"> 3 </a> </li>   
-                                        <li> <a href="#"> ... </a> </li>   
-                                        <li> <a href="#"> 5 </a> </li>   
-                                        <li class="nxt"> <a href="#"> <i class="fa fa-angle-right"></i> </a> </li>
-                                    </ul>
+                                    {{ $hasilpro->links() }}
                                 </div>
                             </div>
                         </div>

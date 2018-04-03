@@ -25,7 +25,7 @@ $(function ($) {
         rtl: false,
         loop: true,
         nav: true,
-        autoplay: false,
+        autoplay: true,
         dots: true,
         responsive: {
             0: {items: 1}

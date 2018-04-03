@@ -1,5 +1,6 @@
 <!-- Favicon -->
-<!-- <link rel="apple-touch-icon-precomposed icon" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png"> -->
+<link rel="apple-touch-icon-precomposed icon" sizes="144x144" href="{{prefix_domain().'/galeri/favicon.jpg?'.Time()}}">
+<link rel="icon" sizes="144x144" href="{{prefix_domain().'/galeri/favicon.jpg?'.Time()}}">
 {{createFavicon($toko)}}
 
 <!-- CSS Global -->
@@ -19,10 +20,10 @@
 
 <!-- Custom CSS -->
 @if($tema->isiCss=='')
-	{{ generate_theme_css('femmeoutfit/assets/css/home-ten.css') }} 
+	{{ generate_theme_css('femmeoutfit/assets/css/home-ten.css?v=001b') }} 
 @else
 	{{ generate_theme_css('femmeoutfit/assets/css/edithome-ten.css') }} 
 @endif
-{{ generate_theme_css('femmeoutfit/assets/css/main-style.css') }} 
+{{ generate_theme_css('femmeoutfit/assets/css/main-style.css?v=001n') }} 
 
 

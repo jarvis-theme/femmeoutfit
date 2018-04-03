@@ -1,4 +1,4 @@
-﻿<article class="page-body">
+<article class="page-body">
 
     <!--Breadcrumb Section Start-->
     <section class="breadcrumb-bg mask-overlay bg-img-5">                
@@ -12,7 +12,6 @@
         </div>
     </section>
     <!--Breadcrumb Section End-->
-
     <section class="wrapper sec-space blog-post blog-thumb">
         <!-- Blog Post Starts -->
         <div class="container">
@@ -22,8 +21,8 @@
                     <div class="widget-wrap"> 
                         <h2 class="widget-title"> search </h2>
                         <div class="widget-content">
-                            <form class="sidebar-search">
-                                <input type="text" placeholder="Type & Hit Enter..." class="form-control">
+                            <form class="sidebar-search" action="{{URL::to('search')}}" method="post">
+                                <input name="search" type="text" placeholder="Type keyword..." class="form-control">
                             </form>
                         </div>
                     </div>
@@ -104,14 +103,15 @@
                         @foreach(list_blog(null,@$blog_category) as $blog)
                             <article class="block-inline post-wrap">
                                 <div class="row">
-                                    @if(!empty(imgString($blog->isi)))
+                                    @if((imgString($blog->isi)))
                                         <div class="col-sm-12 col-md-6">
                                             <div class="post-media">
-                                                <a href="{{ blog_url($blog) }}"> <img src="{{ imgString($blog->isi) }}" alt="{{ $blog->judul }}"> </a>
+                                                <a href="{{ blog_url($blog) }}"> 
+                                                <img src="{{ imgString($blog->isi) }}" alt="{{ $blog->judul }}"> </a>
                                             </div>
                                         </div>
                                     @endif
-                                    @if(!empty(imgString($blog->isi)))
+                                    @if((imgString($blog->isi)))
                                     <div class="col-sm-12 col-md-6">
                                     @else
                                     <div class="col-sm-12 col-md-12">
@@ -123,12 +123,13 @@
                                             <ul class="list-inline post-meta">
                                                 <li> {{ date("M d, Y", strtotime($blog->created_at)) }} </li> 
                                                 <li> by <a href="#"> Admin </a> </li> 
-                                                <li> in <a href="#"> Print </a> </li>
+                                                <li> in <a href="#"> {{@$blog->kategori->nama}} </a> </li>
                                             </ul>
                                         </div>
                                         <div class="post-body">
                                             {{ short_description($blog->isi,300) }}
                                         </div>
+                                        <br>
                                         <div class="post-footer">
                                             <a class="title-2 link" href="{{ blog_url($blog) }}"> read more <i class="arrow_right"></i> </a>
                                         </div>
@@ -137,14 +138,6 @@
                             </article>
                         @endforeach
                         <div class="block-inline pagination-wrap text-center">
-                            <!-- <ul class="pagination-1 font-2">  
-                                <li> <a href="#" class="active"> 1 </a> </li>
-                                <li> <a href="#"> 2 </a> </li>
-                                <li> <a href="#"> 3 </a> </li>   
-                                <li> <a href="#"> ... </a> </li>   
-                                <li> <a href="#"> 5 </a> </li>   
-                                <li class="nxt"> <a href="#"> <i class="fa fa-angle-right"></i> </a> </li>
-                            </ul> -->
                             {{ list_blog(1,@$blog_category)->links() }}
                         </div>
                     @else
@@ -157,5 +150,6 @@
         </div>
         <!-- / Blog Post Ends -->
     </section>
+    
 
 </article>

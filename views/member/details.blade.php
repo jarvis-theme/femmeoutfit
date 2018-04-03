@@ -17,7 +17,7 @@
         <div class="container">
             <!-- My Account Starts -->
             @if($pengaturan->checkoutType!=2)
-                @if($order->count() == 0)
+                @if($order->count() != 0)
                 <div class="cart-table">
                     <form class="cart-form">
                         <table class="product-table">

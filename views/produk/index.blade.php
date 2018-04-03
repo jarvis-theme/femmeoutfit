@@ -1,12 +1,12 @@
-﻿<article class="page-body">
+<article class="page-body">
 
     <!--Breadcrumb Section Start-->
     <section class="breadcrumb-bg mask-overlay">                
         <div class="container">
             <div class="site-breadcumb">                        
-                <h1 class="title-1"> Shop Grid with Sidebar Left </h1> 
+                <h1 class="title-1"> Our Product </h1> 
                 <ol class="breadcrumb breadcrumb-menubar">
-                    <li> <a href="#"> Home </a> <a href="#"> Shop  </a> Shop Grid with Sidebar Left </li>                             
+                    <li> <a href="/"> Home </a> <a href="#"> Shop  </a> </li>                             
                 </ol>
             </div>  
         </div>
@@ -77,16 +77,7 @@
                             <h2 class="title-2">Price</h2>
                             <div id="slider-range" class="slider-range"></div>
                             <label  for="amount" class="amount">Range: </label> <input type="text" id="amount" readonly />   
-                        </div>
-                        <div class="widget-content">
-                            <h2 class="title-2"> color </h2>
-                            <ul class="color-optn">
-                                <li> <a href="#"> <img alt="" src="assets/img/common/product/color-1.jpg"> </a> </li>
-                                <li> <a href="#"> <img alt="" src="assets/img/common/product/color-2.jpg"> </a> </li>
-                                <li> <a href="#"> <img alt="" src="assets/img/common/product/color-3.jpg"> </a> </li>
-                                <li> <a href="#"> <img alt="" src="assets/img/common/product/color-4.jpg"> </a> </li>
-                            </ul>
-                        </div>                                    
+                        </div>                                  
                         <div class="widget-content">
                             <h2 class="title-2"> Size Option </h2>
                             <ul class="size-optn">
@@ -109,7 +100,7 @@
                         </div>                                    
                     </div> -->
                     <div class="widget-wrap filter-option"></div>
-                    <div class="widget-wrap"> 
+                    <!--<div class="widget-wrap"> 
                         <h2 class="widget-title"> recent products </h2>
                         <div class="widget-content recent-prod">
 
@@ -121,13 +112,13 @@
 
                                 <div class="product-content">
                                     <h2 class="product-title"> <a href="{{ product_url($best) }}">{{$best->nama}}</a> </h2>
-                                    <span class="price"> <b>{{ price($best->hargaJual) }}</b><br> <del>{{ price($best->hargaCoret) }}</del> </span>
+                                    <span class="price"> <b>{{ price($best) }}</b><br> <del>{{ price($best->hargaCoret,null,1) }}</del> </span>
                                 </div>
                             </div>
                             @endforeach    
 
                         </div>
-                    </div>
+                    </div>-->
                 </aside>    
                 <!-- Products Sidebar Ends --> 
 
@@ -141,14 +132,14 @@
                             <form action="#" class="form-sorter">
                                 <label> Sort by </label>
                                 <div class="search-selectpicker selectpicker-wrapper">
-                                    <select name="SortBy" id="SortBy" class="selectpicker"  data-width="100%" data-toggle="tooltip">
-                                        <option value="manual">Featured</option>
-                                        <option value="title-ascending">Alphabetically, A-Z</option>
-                                        <option value="title-descending">Alphabetically, Z-A</option>
-                                        <option value="price-ascending">Price, low to high</option>
-                                        <option value="price-descending">Price, high to low</option>
-                                        <option value="created-descending">Date, new to old</option>
-                                        <option value="created-ascending">Date, old to new</option>
+                                    <select name="SortBy" id="sort" name="sort"  data-rel="{{URL::current()}}" class="selectpicker"  data-width="100%" data-toggle="tooltip">
+                                        <option value="">Default</option>
+                                        <option value="az">Alphabetically, A-Z</option>
+                                        <option value="za">Alphabetically, Z-A</option>
+                                        <option value="high">Price, low to high</option>
+                                        <option value="low">Price, high to low</option>
+                                        <option value="new">Date, new to old</option>
+                                        <option value="old">Date, old to new</option>
                                     </select>
                                 </div>
                             </form>
@@ -192,16 +183,16 @@
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a href="{{ product_url($myproduk) }}" class="img"> 
-                                                    <img alt="{{ $myproduk->nama }}" src="{{ product_image_url($myproduk->gambar1) }}">
+                                                    <img alt="{{ $myproduk->nama }}" src="{{ product_image_url($myproduk->gambar1,'medium') }}">
                                                     <span class="product-hover">
-                                                        <img alt="{{ $myproduk->nama }}" src="{{ product_image_url($myproduk->gambar2) }}">
+                                                        <img alt="{{ $myproduk->nama }}" src="{{ product_image_url($myproduk->gambar2,'medium') }}">
                                                     </span>
                                                 </a>
                                                 <!-- <div class="quick-view">
                                                     <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
                                                 </div> -->
                                                 @if(is_terlaris($myproduk))
-                                                    <div class="sale-tag"> Hot </div>
+                                                    <div class="sale-tag"> Best </div>
                                                 @endif
                                                 @if(is_produkbaru($myproduk))
                                                     <div class="new-tag"> New </div>
@@ -209,7 +200,7 @@
                                             </div>
                                             <div class="product-content">
                                                 <h2 class="product-title"> <a href="#">{{ $myproduk->nama }}</a> </h2>
-                                                <span class="price"> <b>{{ price($myproduk->hargaJual) }}</b> <del>{{ price($myproduk->hargaCoret) }}</del> </span>
+                                                <span class="price"> <b>{{ price($myproduk) }}</b> <del>{{ $myproduk->hargaCoret?price($myproduk->hargaCoret,null,1):'' }}</del> </span>
                                                 
                                                 <div class="product-links"> 
                                                     <a href="{{ product_url($myproduk) }}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
@@ -234,60 +225,53 @@
 
                         <!-- Product List View Starts -->
                         <div id="list-view" class="tab-pane fade" role="tabpanel">                                     
+                             @foreach(list_product(12, @$category, @$collection) as $myproduk)
                             <div class="row listview-wrap">
+                            
                                 <div class="col-lg-4 col-md-5 col-sm-12">
                                     <div class="product-item">
                                         <div class="product-image">
                                             <a href="#" class="img"> 
-                                                <img src="assets/img/common/product/prod-1.jpg" alt="" /> 
+                                                <img alt="{{ $myproduk->nama }}" src="{{ product_image_url($myproduk->gambar1) }}">
                                                 <span class="product-hover">
-                                                    <img alt="" src="assets/img/common/product/prod-flip-1.jpg">          
+                                                    <img alt="{{ $myproduk->nama }}" src="{{ product_image_url($myproduk->gambar2) }}">
                                                 </span>
                                             </a>
-                                            <ul class="color-swatch-item">
-                                                <li> <a href="#"> <img src="assets/img/common/product/gray.png" alt="" /> </a> </li>
-                                                <li> <a href="#"> <img src="assets/img/common/product/black.png" alt="" /> </a> </li>
-                                            </ul>
-                                            <div class="quick-view">
+                                            <!--div class="quick-view">
                                                 <a href="#product-preview" data-toggle="modal" class="icon_plus"> </a>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-8 col-md-7 col-sm-12">
                                     <div class="product-item">
                                         <div class="product-content">
-                                            <h2 class="product-title"> <a href="#">samurai t-shirt</a> </h2>
-                                            <span class="price"> <b>$45.05</b> <del></del> </span>
-                                            <div class="rating">                                                              
+                                            <h2 class="product-title"> <a href="#" style="font-size: 20px;">{{ $myproduk->nama }}</a> </h2>
+                                            <span class="price"> <b>{{ price($myproduk) }}</b> <del>{{ $myproduk->hargaCoret?price($myproduk->hargaCoret,null,1):'' }}</del> </span>
+                                            <!--<div class="rating">                                                              
                                                 <span class="star active"></span>
                                                 <span class="star active"></span>
                                                 <span class="star active"></span>                                           
                                                 <span class="star active"></span>
                                                 <span class="star"></span>                                                
-                                            </div>
+                                            </div>-->
                                             <div class="discription">
-                                                <p>Coupling a blended linen construction with tailored style, the River Island HR Jasper ro Blazer will imprint a touch of dapper charm into your after-dark wardrobe. Tuxedo ise Suspendisse feugiat condimentum ex, sed venenatis sapien. Mauris nisi ipsum, pellenti ntesque et efficitur nec, feugiat vitae erat. Pellentesque ultrices libero lacus.</p>
+                                                <p>{{ $myproduk->dmt }}</p>
                                             </div>
                                             <div class="product-links"> 
-                                                <a href="#" class="add-to-cart"> <span> Add To Cart </span> <i class="icon_cart_alt"></i> </a>
-                                                <a href="#" class="icon_heart_alt"></a>
-                                                <a href="#" class="icon_piechart"></a>
+                                                <a href="{{ product_url($myproduk) }}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
+                                                <!--<a href="#" class="icon_heart_alt"></a>
+                                                <a href="#" class="icon_piechart"></a>-->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
+                             @endforeach
                             <div class="col-sm-12 col-lg-12">
                                 <div class="block-inline pagination-wrap text-center">
-                                    <ul class="pagination-1 font-2">  
-                                        <li> <a href="#" class="active"> 1 </a> </li>
-                                        <li> <a href="#"> 2 </a> </li>
-                                        <li> <a href="#"> 3 </a> </li>   
-                                        <li> <a href="#"> ... </a> </li>   
-                                        <li> <a href="#"> 5 </a> </li>   
-                                        <li class="nxt"> <a href="#"> <i class="fa fa-angle-right"></i> </a> </li>
-                                    </ul>
+                                    {{ list_product(12,@$category,@$collection)->links() }}
                                 </div>
                             </div>
                         </div>

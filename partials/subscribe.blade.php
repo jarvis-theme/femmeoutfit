@@ -2,7 +2,7 @@
 <section class="section-five newsletter">
     <div class="container">
         <div class="title-wrap">
-            <h2 class="section-title text-center pt-10">get the latest from FemmeOutfit</h2>
+            <h2 class="section-title text-center pt-10">get the latest from Femme Outfit</h2>
             <p class="sub-title">Sign up for our Newsletter !</p>
         </div>
         <form action="{{ @$mailing->action }}" method="post" id="mc-embedded-subscribe-form subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="newsletter-form">

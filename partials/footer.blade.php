@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-sm-6 col-lg-3 footer-widget">
                 <a href="#" class="footer-logo"> 
-                    {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'itemprop'=>'logo', 'srcset'=>logo_image_url())) }}
+                    {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'style'=>'margin: -38px 0 0;', 'itemprop'=>'logo', 'srcset'=>logo_image_url())) }}
                 </a>
-                <div class="address">
-                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_house_alt">&nbsp;</i> <span class="ft-line-txt">{{ ucwords(@$kontak->alamat) }}</span></div>
-                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_mobile">&nbsp;</i> <span class="ft-line-txt"> {{ $kontak->hp }}</span></div>
-                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_mail_alt">&nbsp;</i> <span class="ft-line-txt">{{ @$kontak->email }}</span></div>
+                <div class="address" style="margin-top: -20px;">
+                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_house_alt"> </i> <span class="ft-line-txt">{{ ucwords(@$kontak->alamat) }}</span></div>
+                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_mobile"> </i> <span class="ft-line-txt"> {{ $kontak->telepon }}<br>{{ $kontak->hp }}</span></div>
+                    <div class="ft-line" style="margin: 8px 0;"><i class="icon_mail_alt"> </i> <span class="ft-line-txt">{{ @$kontak->email }}</span></div>
                 </div>
             </div>
             <div class="col-sm-hidden col-lg-1 footer-widget">
@@ -27,7 +27,7 @@
                 </div>    
                 @endif    
             @endforeach
-            <div class="col-sm-6 col-lg-3 footer-widget">
+            <div class="col-sm-6 col-lg-4 footer-widget">
                 <h2 class="widget-title"> Method Payment </h2>
                 <div class="list-inline">
                     @foreach(list_banks() as $value)
@@ -54,22 +54,25 @@
                     @endif
                 </div>
                 <div class="clearfix"></div><br>
-                <h2 class="widget-title" style="padding: 0;"> Follow Us </h2>
+                <h2 class="widget-title"> Follow Us </h2>
                 <div class="social-link">
                     <div class="list-inline social-link">
-                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-twitter"></i></a></span>
-                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-facebook"></i></a> </span>
-                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-google-plus"></i></a> </span>
-                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-instagram"></i></a></span>
-                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-pinterest"></i></a> </span>
-                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a   href="#"><i class="fa fa-youtube"></i></a> </span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a target="_blank"  href="http://line.me/ti/p/%40femmeoutfit "><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.jarvis-store.com/femme-outfit-upload/20180102-194933.png"></a> </span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a target="_blank"  href="https://www.youtube.com/c/FemmeOutfit "><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.jarvis-store.com/femme-outfit-upload/20180102-194942.png"></a> </span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a target="_blank"  href="https://www.instagram.com/femmeoutfit/?hl=en"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.jarvis-store.com/femme-outfit-upload/20180102-194930.png"></a></span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a target="_blank"  href="https://twitter.com/femmeoutfit?lang=en"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.jarvis-store.com/femme-outfit-upload/20180102-194938.png"></a></span>
+                        <span style="margin: 10px;color: #ddd;font-size: 16px;"><a target="_blank"  href="https://www.facebook.com/femme.outfit/"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.jarvis-store.com/femme-outfit-upload/20180102-194919.png"></a> </span>
+                        <!--<span style="margin: 10px;color: #ddd;font-size: 16px;"><a target="_blank"  href="#"><i class="fa fa-google-plus"></i></a> </span>-->
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="divider-1" />
+        <br>
+        <!--<hr class="divider-1" />-->
         <p class="copy-rights">
-            © 2017 <a href="#"> <b> {{ Theme::place('title') }} </b> </a>. All Rights Reserved                        
+            © 2018 <a href="#"> <b> {{ Theme::place('title') }} </b> </a>. All Rights Reserved                        
         </p>
     </div>
 </footer>

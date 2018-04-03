@@ -22,8 +22,8 @@
                     <div class="widget-wrap"> 
                         <h2 class="widget-title"> search </h2>
                         <div class="widget-content">
-                            <form class="sidebar-search">
-                                <input type="text" placeholder="Type & Hit Enter..." class="form-control">
+                            <form action="{{URL::to('search')}}" method="post" class="sidebar-search">
+                                <input type="text" placeholder="Type & Hit Enter..." name="search" class="form-control">
                             </form>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                     <div class="recent-wrap">
                                         <div class="recent">
                                             <div class="post-title"> <a href="{{ blog_url($artikel) }}">{{ short_description($artikel->judul, 40) }}</a> </div>
-                                            <div class="post-meta"> <a href="{{ blog_url($artikel) }}"> 14th, Nov, 2017 </a> </div>                                                   
+                                            <div class="post-meta"> <a href="{{ blog_url($artikel) }}"> {{ date("d M Y", strtotime($artikel->created_at)) }} </a> </div>                                                   
                                         </div>
                                     </div>
                                 @endforeach
@@ -99,16 +99,16 @@
                 </aside>                     
                 <!-- Blog Sidebar Starts -->
 
-                <section class="col-sm-8 col-md-8 col-md-offset-1">
+                <section class="col-sm-8 col-md-9">
 
                     <article class="block-inline">
                         <div class="single-post-wrap">
                             <div class="post-media">
                                 <h1 class="title-1">{{ $detailblog->judul }}</h1>                                
                                 <ul class="list-inline post-meta pt-20">
-                                    <li> Posted at <a href="#"> {{ date("M d, Y", strtotime($blog->created_at)) }}7 </a> </li> 
+                                    <li> Posted at <a href="#"> {{ date("M d, Y", strtotime($blog->created_at)) }} </a> </li> 
                                     <li> by <a href="#"> Admin </a> </li> 
-                                    <li> in <a href="#"> Print </a> </li>
+                                    <li> in <a href="#"> {{$detailblog->kategori->nama}} </a> </li>
                                 </ul>
                             </div>                                      
                             <div class="post-body">
@@ -123,15 +123,33 @@
                                 <div class="social-media">
                                     <span class="title-2">Share:</span>
                                     <ul class="list-items">
-                                        <li> <a class="social_facebook" href="#"></a> </li>
+                                        {{--sosialShare(blog_url($detailblog) )--}}
+                                        <li>
+                                            <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{blog_url($detailblog)}}&display=popup&ref=plugin&src=share_button">
+                                                <i class="social_facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?text={{$detailblog->judul}}&url={{blog_url($detailblog)}}">
+                                                <i class="social_twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="social_googleplus" target="_blank" href="https://plus.google.com/share?app=110&url={{blog_url($detailblog)}}">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="social_pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{blog_url($detailblog)}}&media={{imgString($blog->isi)}}&description={{strip_tags($detailblog->isi)}}" class="pin-it-button" count-layout="horizontal"></a>
+                                        </li>
+                                        <!--<li> <a class="social_facebook" href="#"></a> </li>
                                         <li> <a class="social_twitter" href="#"></a> </li>
                                         <li> <a class="social_pinterest" href="#"></a> </li>
                                         <li> <a class="social_instagram" href="#"></a> </li>
-                                        <li> <a class="social_rss" href="#"></a> </li>
+                                        <li> <a class="social_rss" href="#"></a> </li>-->
                                     </ul>
                                 </div>                                           
                             </div>
-                            <hr class="divider">
+                            <!--<hr class="divider">
                             <div class="post-author row ptb-20">
                                 <div class="col-md-3 col-sm-4 col-xs-3">
                                     <img src="assets/img/common/author-1.jpg" alt="">
@@ -144,7 +162,7 @@
                                             vitae ab sint laboriois sam nisi reiciendis deleniti tenetur molestiae. </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <hr class="divider-2">
                         <div class="comment-form-wrap">

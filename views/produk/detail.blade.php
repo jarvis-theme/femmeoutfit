@@ -58,10 +58,6 @@
                     <!-- Products Description Starts --> 
                     <div class="col-md-7 col-sm-12">
                         <div class="product-detail">
-                            <div class="prod-lr-btn">                                   
-                                <a href="#"> <i class=" arrow_left"></i> <img src="assets/img/common/prod-layout/next-1.jpg" alt="" /> </a>
-                                <a href="#"> <i class=" arrow_right "></i> <img src="assets/img/common/prod-layout/next-2.jpg" alt="" /> </a>
-                            </div>
                             <div class="product-heading">
                                 <h2 class="section-title">{{ $produk->nama }}</h2>                                              
                             </div>
@@ -79,12 +75,12 @@
                                 </div>
                             </div> --> 
                             <div class="price">
-                                <b id="fixprice1">{{ price($produk->hargaJual) }}</b> <del>{{ price($produk->hargaCoret) }}</del>
+                                <b id="fixprice1">{{ price($produk) }}</b> <del>{{ $produk->hargaCoret?price($produk->hargaCoret,null,1):'' }}</del>
                             </div>
 
                             <div class="product-availability">
                                 <ul class="stock-detail list-items black-color">                                       
-                                    <li class=""> <i class="icon-layers icons"></i> <span> Only <b>{{$produk->stok}}</b> Left </span> <i class="arrow_carrot-down"></i> </li>
+                                    <!--<li class=""> <i class="icon-layers icons"></i> <span> Only <b>{{$produk->stok}}</b> Left </span> <i class="arrow_carrot-down"></i> </li>-->
                                     <li> <b>Available:</b> 
                                         @if($produk->stok>0)
                                         <span class="green-color"> In Stock </span>  
@@ -136,15 +132,36 @@
                             </form>                                            
 
                             <div class="prod-code upper-case">
-                                <p> <b>SKU : </b> <b class="black-color">{{$produk->barcode}}</b> </p>
+                                <p> <b>SKU : </b> <b class="black-color">{{!empty($produk->barcode)?$produk->barcode:'-'}}</b> </p>
                                 <div class="prod-social"> 
                                     <b>Share : </b>
                                     <ul class="list-items">
-                                        <li><a class="facebook" href="#"><i class="social_facebook"></i></a></li>
+                                        {{--sosialShare(product_url($produk))--}}
+                                        <li>
+                                            <a class="facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{product_url($produk)}}&display=popup&ref=plugin&src=share_button">
+                                                <i class="social_facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="twitter" target="_blank" href="https://twitter.com/intent/tweet?text={{$produk->nama}}&url={{product_url($produk)}}">
+                                                <i class="social_twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="googleplus" target="_blank" href="https://plus.google.com/share?app=110&url={{product_url($produk)}}">
+                                                <i class="social_googleplus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="pinterest" target="_blank" href="http://pinterest.com/pin/create/button/?url={{product_url($produk)}}&media={{ product_image_url($produk->gambar1) }}&description={{strip_tags($produk->deskripsi)}}" class="pin-it-button" count-layout="horizontal">
+                                                <i class="social_pinterest"></i>
+                                            </a>
+                                        </li>
+                                        <!--<li><a class="facebook" href="#"><i class="social_facebook"></i></a></li>
                                         <li><a class="twitter" href="#"><i class="social_twitter"></i></a></li>
                                         <li><a class="instagram" href="#"><i class="social_googleplus"></i></a></li>
                                         <li><a class="pinterest" href="#"><i class="social_pinterest"></i></a></li>
-                                        <li><a class="pinterest" href="#"><i class="social_instagram"></i></a></li>
+                                        <li><a class="pinterest" href="#"><i class="social_instagram"></i></a></li>-->
                                     </ul> 
                                 </div>
                             </div>
@@ -173,12 +190,11 @@
                             {{ pluginComment(product_url($produk), @$produk) }}
                         </div>
                         <div id="prod-tab-3" class="tab-pane fade">
-                            {{ getTagsProduk('<a rel="tag">,</a>,',$produk->tags,null,true) }}
+                            {{-- getTagsProduk('<a rel="tag">,</a>,',$produk->tags,null,true) --}}
                         </div>
                         <div id="prod-tab-4" class="tab-pane fade">
-                            <p> <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit !</b> </p>
-                            <p> Suspendisse ultricies scelerisque turpis, elementum ornare arcu posuere mollis. Donec vitae tempor ante, ut tempus augue. Maecenas aliquam, ante quis egestas molestie, ipsum sapien faucibus lorem, ac placerat magna purus id quam. Proin id felis sapien.</p>
-                            <p> Mauris metus eros, finibus et eros eget, vehicula tincidunt ex. Integer dictum turpis felis, at gravida lectus vestibulum et. Mauris vitae massa pellentesque, rutrum lacus sit amet, dictum massa. </p>
+                            <!--<p> <b>Informasi Tetap</b> </p>-->
+                            <p style="text-align:center"> For ordering and further information :<br>Text us on: <br><a href="whatsapp://send?text=Halo&phone=+6285703077111&abid=+6285703077111" >WA : +62857 030 77 111</a><br>Line Official: <a target="_blank" href="http://line.me/ti/p/%40femmeoutfit">@femmeoutfit</a>.<br><br>#FemmeOutfitBasicSeries</p>
                         </div>
                     </div>
                 </div>
@@ -191,11 +207,11 @@
                         <div class="relative-div row">                           
                             <div class="related-prod-slider-2 owl-carousel owl-nav-2">
                             
-                            @foreach(other_product($produk,null)  as $related)
+                            @foreach(other_product($produk)  as $related)
                                 <div class="item">
                                     <div class="product-item">
                                         <div class="product-image">
-                                            <a href="#" class="img"> 
+                                            <a href="{{ product_url($related) }}" class="img"> 
                                                 <img src="{{ product_image_url($related->gambar1,'medium') }}" alt="" /> 
                                                 <span class="product-hover">
                                                     <img alt="" src="{{ product_image_url($related->gambar2,'medium') }}">          
@@ -210,8 +226,8 @@
                                             </div> -->
                                         </div>
                                         <div class="product-content">
-                                            <h2 class="product-title"> <a href="#">{{$related->nama}}</a> </h2>
-                                            <span class="price"> <b>{{ price($related->hargaJual) }}</b> <del>{{ price($related->hargaCoret) }}</del> </span>
+                                            <h2 class="product-title"> <a href="{{ product_url($related) }}">{{$related->nama}}</a> </h2>
+                                            <span class="price"> <b>{{ price($related->hargaJual) }}</b> @if($related->hargaCoret>0)<del>{{ price($related->hargaCoret) }}</del>@endif </span>
                                             <!-- <div class="rating">                                                              
                                                 <span class="star active"></span>
                                                 <span class="star active"></span>
@@ -220,7 +236,7 @@
                                                 <span class="star half"></span>                                                
                                             </div> -->
                                             <div class="product-links"> 
-                                                <a href="#" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
+                                                <a href="{{ product_url($related) }}" class="add-to-cart"> <span> View </span> <i class="icon_cart_alt"></i> </a>
                                                 <!-- <a href="#" class="icon_heart_alt"></a>
                                                 <a href="#" class="icon_piechart"></a> -->
                                             </div>
@@ -237,11 +253,11 @@
 
             <!-- Product Sidebar Starts -->                     
             <aside class="prod-layout-sidebar col-sm-4 col-md-3 right-sidebar">
-                <div class="widget-wrap">
+                <!--<div class="widget-wrap">
                     <div class="brand-logo">
-                        <a href="#"> <img src="assets/img/common/brand-logo.png" alt=""> </a>
+                        <a href="#"> <img src="#" alt=""> </a>
                     </div>
-                </div>
+                </div>-->
                 <div class="widget-wrap">                             
                     <ul class="widget-feature">
                         <li> <a href="#"> <i class="icon_pin_alt feature-icon"></i> <span class="feature-des"> We commit will send this product in 2 days.</span> </a> </li>                                  
@@ -256,13 +272,13 @@
                         <div class="item">
                             @foreach(best_seller(2) as $best)
                             <div class="recent-wrap">                   
-                                <div class="image">                                                                                                                 
+                                <div class="image" style="width: 150px;">                                                                                                                 
                                     <a href="{{ product_url($best) }}"> <img class="img-responsive img-recent" src="{{ product_image_url($best->gambar1,'thumb') }}" alt=""> </a>
                                 </div>                                               
 
-                                <div class="product-content">
+                                <div class="product-content" style="margin-left: 160px;">
                                     <h2 class="product-title"> <a href="{{ product_url($best) }}">{{$best->nama}}</a> </h2>
-                                    <span class="price"> <b>{{ price($best->hargaJual) }}</b><br> <del>{{ price($best->hargaCoret) }}</del> </span>
+                                    <span class="price"> <b>{{ price($best) }}</b><br> <del>{{ $best->hargaCoret?price($best->hargaCoret,null,1):'' }}</del> </span>
                                 </div>
                             </div>
                             @endforeach     

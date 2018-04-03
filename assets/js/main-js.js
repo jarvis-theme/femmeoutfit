@@ -588,14 +588,14 @@ $(window).on('load',function () {
 });
 $(window).on('scroll',function () {
     /*--------- Sticky Header ---------*/
-    if ($(window).width() > 1200) {
+    /*if ($(window).width() > 1200) {
         if ($(this).scrollTop() > 5) {
             $('.header-two').addClass('is-sticky');
         }
         else {
             $('.header-two').removeClass('is-sticky');
         }
-    }
+    }*/
 
     /*------------------- Scroll To Top Animate -------------------*/
     if ($(this).scrollTop() > 100) {

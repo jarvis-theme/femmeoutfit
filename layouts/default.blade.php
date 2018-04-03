@@ -12,30 +12,34 @@
     </head>
     <body id="home" class="wide">        
         <!-- PRELOADER -->
-        <!-- <div id="loading">
+        <!--<div id="loading">
             <div class="loader"></div>
         </div> -->
         <!-- /PRELOADER -->
-        <div id="cartDrawer" class="drawer drawerRight">
-            <div class="bingoCartTitle">
-                <span></span>
-                <div class="close jsDrawerClose">
-                    <span>&times;</span>
-                </div>
-            </div>
-            <div id="cartContainer"></div>
-        </div>
-        <div id="pageContainer" class="isMoved">
+        
+        <!-- WRAPPER -->
+        <main id="home-ten" class="wrapper">
+            <!-- HEADER -->
             {{ Theme::partial('header') }} 
-            <main class="mainContent contentMobileFixed">
-                {{ Theme::place('content') }} 
-            </main>
+            <!-- /HEADER -->
+
+            <!-- CONTENT AREA -->
+            <article class="wrapper"> 
+                {{Theme::place('content')}}    
+            </article>
+            <!-- / CONTENT AREA -->
+
+            <!-- FOOTER -->
             <hr class="divider-1">
             {{ Theme::partial('footer') }} 
-        </div>
+            <!-- /FOOTER -->
+
+            <div id="to-top" class="to-top"> <i class="arrow_carrot-up"></i> </div>
+        </main>
+        <!-- /WRAPPER -->
         {{ Theme::partial('defaultjs') }} 
         {{ Theme::partial('analytic') }} 
-        {{ Theme::asset()->scripts() }}
+        {{-- Theme::asset()->scripts() --}}
         <div id="goToTop" style="display: none;"><span class="fa fa-long-arrow-up"></span></div>
     </body>
 </html>

@@ -10,10 +10,9 @@
                         <li><a href="{{ url('member') }}">My Order</a></li>
                         <li>{{HTML::link('logout', 'Logout')}}</li>
                         @else
-                        <li><a href="{{ url('member') }}" id="customer_login_link"><i class="icon_lock-open"></i> Log In </a></li>
-                        <li><a href="{{ url('member/create') }}" id="customer_register_link">Sign In</a></li>
+                        <li><a href="{{ url('register') }}" id="customer_login_link"><i class="icon_lock-open"></i> Log In </a></li>
                         @endif
-                        <li>
+                        <!--<li>
                             <form action="#" class="language">
                                 <div class="search-selectpicker selectpicker-wrapper">
                                     <select class="selectpicker" data-width="100%" data-toggle="tooltip" >                                              
@@ -22,13 +21,14 @@
                                     </select>
                                 </div>                                                   
                             </form>    
-                        </li>
+                        </li>-->
+                        <li><a href="{{ url('konfirmasiorder') }}">Payment Confirmation</a></li>
                         <li>
-                            <form action="#" class="currency">
+                            <form action="{{url('currency')}}" method="post">
                                 <div class="search-selectpicker selectpicker-wrapper">
-                                    <select class="selectpicker" data-width="100%" data-toggle="tooltip">
-                                        <option>IDR</option>
-                                        <option>USD</option>
+                                    <select class="selectpicker" data-width="100%" data-toggle="tooltip" name="currency" onchange="submit()" method="post">
+                                        <option value="1" {{Session::get('matauang')==1?'selected':''}}>IDR</option>
+                                        <option value="3" {{Session::get('matauang')==3?'selected':''}}>USD</option>
                                     </select>
                                 </div>                                                   
                             </form>  
@@ -55,7 +55,7 @@
                             </div> 
                         </li>
                         <li>
-                            <div class="header-cart-wrap" id="shoppingcartplace">
+                            <div class="header-cart-wrap shoppingcartplace">
                                 {{ shopping_cart() }}
                             </div>   
                         </li>
@@ -70,9 +70,9 @@
     <div class="header-wrap ">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 logo-wrap" style="text-align:center">
+                <div class="col-md-12 col-sm-12 col-xs-12 logo-wrap" style="text-align:center;margin: 0;">
                     <a href="/">
-                        {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'style'=>'display: inherit;', 'srcset'=>logo_image_url())) }}
+                        {{ HTML::image(logo_image_url(), 'logo '.strtolower(Theme::place('title')), array('class'=>'img-responsive', 'style'=>'display: inherit;margin-bottom: -30px;', 'srcset'=>logo_image_url())) }}
                     </a>
                     <!-- <a class="logo" href="index.html"> <img src="assets/img/common/main-logo.png" alt="logo" title="Logo"> </a> -->
                 </div>
@@ -82,11 +82,11 @@
                         <div class="search-form-wrap">
                             <span class="icon-magnifier search-icon"></span>
                             <form action="{{URL::to('search')}}" method="post" class="search-form">
-                                <input class="search" type="text" name="search" placeholder="Type & Hit Enter" />
+                                <input class="search" type="text" name="search" placeholder="Type Product / Keyword" />
                                 <span class="icon_close search-close"></span>
                             </form>
                         </div>
-                        <div class="header-cart-wrap" id="shoppingcartplace">
+                        <div class="header-cart-wrap shoppingcartplace" id="shoppingcartplace">
                             {{ shopping_cart() }}
                         </div>                     
                     </div>
@@ -98,10 +98,10 @@
                             <ul class="primary-navbar font-2">
                             @foreach(main_menu()->link as $key=>$link)
                                 <li class="dropdown mega-dropdown">
-                                    <a {{$key==1?'aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle"':''}} href="{{menu_url($link)}}">
+                                    <a {{$key==2?'aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle"':''}} href="{{menu_url($link)}}">
                                         {{$link->nama}}
                                     </a>
-                                    @if($key==1)
+                                    @if($key==2)
                                     <div class="dropdown-menu mega-dropdown-menu">
                                         @foreach(list_category() as $key=>$menu)
                                             @if($menu->parent=='0')

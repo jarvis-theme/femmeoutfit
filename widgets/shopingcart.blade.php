@@ -1,5 +1,5 @@
 <div class="header-cart">
-    <a href="shopping-cart.html"> 
+    <a href="{{URL::to('checkout')}}"> 
         <i class="cart-icon icon-handbag icons"></i> <span class="count"> {{Shpcart::cart()->total_items()}} </span> 
     </a>
 </div>
@@ -11,7 +11,7 @@
             	@foreach (Shpcart::cart()->contents() as $key => $cart)
                 <div class="alert">
                     <!-- <a href="#" class="close icon_close" data-dismiss="alert" aria-label="close"></a> -->
-                    <a class="img" href="product-layout-1.html"> <img src="{{product_image_url($cart['image'],'thumb')}}" alt=""/> </a>
+                    <a class="img" href="#"> <img src="{{product_image_url($cart['image'],'thumb')}}" alt=""/> </a>
                     <div class="cart-title">
                         <a class="font-2" href="#">{{$cart['name']}}</a>
                         <p class="price"> 
